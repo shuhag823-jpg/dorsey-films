@@ -5,97 +5,137 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dorsey Films</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0a0a0a;
-    color: white;
+    font-family: 'Inter', sans-serif;
+    background: #0b0b0b;
+    color: #eaeaea;
+    overflow-x: hidden;
 }
 
-/* HERO */
+/* HERO VIDEO */
 .hero {
+    position: relative;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,1)),
-    url('https://images.unsplash.com/photo-1517602302552-471fe67acf66');
-    background-size: cover;
-    background-position: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;    
+    padding: 0 10%;
+}
+
+.hero video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeUp 1.5s ease forwards;
 }
 
 .hero h1 {
-    font-size: 4rem;
-    letter-spacing: 2px;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
 }
 
 .hero p {
-    color: #ccc;
-    max-width: 500px;
+    color: #bbb;
 }
 
 .btn {
     margin-top: 20px;
-    padding: 14px 30px;
-    background: #e50914;
-    color: white;
-    border-radius: 5px;
+    display: inline-block;
+    padding: 12px 26px;
+    border: 1px solid white;
     text-decoration: none;
-    font-weight: bold;
+    color: white;
+    transition: 0.3s;
 }
 
-/* SECTION */
+.btn:hover {
+    background: white;
+    color: black;
+}
+
+/* SECTIONS */
 .section {
-    padding: 80px 20px;
-    text-align: center;
+    padding: 80px 10%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s;
 }
 
-.section h2 {
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* MONOLOGUES */
+.monologue {
+    max-width: 700px;
     margin-bottom: 40px;
+    color: #ccc;
+    border-left: 2px solid #444;
+    padding-left: 15px;
 }
 
 /* GRID */
 .grid {
     display: flex;
+    gap: 20px;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .card {
-    width: 300px;
-    margin: 15px;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #111;
+    flex: 1 1 250px;
+    background: #161616;
+    padding: 20px;
+    border-radius: 6px;
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: scale(1.05);
-}
-
-/* VIDEO THUMB */
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card p {
-    padding: 15px;
-    color: #ccc;
+    transform: translateY(-6px);
 }
 
 /* FOOTER */
 footer {
-    text-align: center;
-    padding: 30px;
+    padding: 40px 10%;
     color: #777;
+    border-top: 1px solid #222;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 </style>
 </head>
@@ -103,55 +143,79 @@ footer {
 <body>
 
 <div class="hero">
-    <h1>DORSEY FILMS</h1>
-    <p>Cinematic storytelling that captures emotion, tension, and reality.</p>
-    <a href="#work" class="btn">View Work</a>
+    <video autoplay muted loop playsinline>
+        <source src="https://cdn.coverr.co/videos/coverr-cinematic-shot-of-a-man-walking-1606/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1>Dorsey Films</h1>
+        <p>Stories told in silence, tension, and truth.</p>
+        <a href="#work" class="btn">Explore Work</a>
+    </div>
 </div>
 
 <section id="work" class="section">
-    <h2>Featured Work</h2>
+    <h2>Selected Monologues</h2>
 
-    <div class="grid">
+    <div class="monologue">
+        “You don’t realize you’re changing… until the person you used to be feels like a stranger.”
+    </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-            <p>"I became what I once feared."</p>
-        </div>
+    <div class="monologue">
+        “It’s not the noise that breaks you… it’s the quiet moments when everything finally catches up.”
+    </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae">
-            <p>"Silence is louder than chaos."</p>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4">
-            <p>"Every frame tells a story."</p>
-        </div>
-
+    <div class="monologue">
+        “I stopped explaining myself… not because I had nothing to say, but because no one was listening.”
     </div>
 </section>
 
 <section class="section">
-    <h2>Services</h2>
+    <h2>What We Do</h2>
 
     <div class="grid">
-        <div class="card"><p>🎬 Film Production</p></div>
-        <div class="card"><p>✂️ Video Editing</p></div>
-        <div class="card"><p>🎭 Cinematic Direction</p></div>
+        <div class="card">
+            <h3>Film Production</h3>
+            <p>Visual storytelling with emotional depth.</p>
+        </div>
+
+        <div class="card">
+            <h3>Editing</h3>
+            <p>Precision, pacing, and cinematic rhythm.</p>
+        </div>
+
+        <div class="card">
+            <h3>Creative Direction</h3>
+            <p>Turning ideas into powerful visual narratives.</p>
+        </div>
     </div>
 </section>
 
 <section class="section">
     <h2>About</h2>
-    <p>
-        Dorsey Films is a creative studio focused on powerful visuals, emotional storytelling,
-        and cinematic excellence.
+    <p style="max-width:600px; color:#bbb;">
+        Dorsey Films focuses on minimal, cinematic storytelling — where every frame carries weight,
+        and every silence speaks.
     </p>
 </section>
 
 <footer>
     <p>© 2026 Dorsey Films</p>
 </footer>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+    sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            sec.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
