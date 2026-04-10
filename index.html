@@ -11,12 +11,30 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #0b0b0b;
+    background: #0a0a0a;
     color: #eaeaea;
-    overflow-x: hidden;
 }
 
-/* HERO VIDEO */
+/* NAVBAR */
+.nav {
+    position: fixed;
+    width: 100%;
+    padding: 20px 10%;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* HERO */
 .hero {
     position: relative;
     height: 100vh;
@@ -30,8 +48,6 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    top: 0;
-    left: 0;
     z-index: -2;
 }
 
@@ -39,20 +55,17 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.65);
-    top: 0;
-    left: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0.4), #000);
     z-index: -1;
 }
 
 .hero-content {
     max-width: 600px;
-    animation: fadeUp 1.5s ease forwards;
 }
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 4rem;
 }
 
 .hero p {
@@ -61,12 +74,11 @@ body {
 
 .btn {
     margin-top: 20px;
-    display: inline-block;
     padding: 12px 26px;
     border: 1px solid white;
     text-decoration: none;
     color: white;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -76,28 +88,42 @@ body {
 
 /* SECTIONS */
 .section {
-    padding: 80px 10%;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s;
+    padding: 100px 10%;
 }
 
-.section.show {
-    opacity: 1;
-    transform: translateY(0);
+/* REEL MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
 }
 
-h2 {
-    font-family: 'Playfair Display', serif;
+.modal iframe {
+    width: 80%;
+    height: 70%;
 }
 
-/* MONOLOGUES */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* MONOLOGUE */
 .monologue {
     max-width: 700px;
-    margin-bottom: 40px;
-    color: #ccc;
+    margin-bottom: 30px;
     border-left: 2px solid #444;
     padding-left: 15px;
+    color: #ccc;
 }
 
 /* GRID */
@@ -109,95 +135,105 @@ h2 {
 
 .card {
     flex: 1 1 250px;
-    background: #161616;
-    padding: 20px;
-    border-radius: 6px;
-    transition: 0.3s;
+    background: #141414;
+    padding: 25px;
+    border-radius: 8px;
 }
 
-.card:hover {
-    transform: translateY(-6px);
+/* FORM */
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
 }
 
 /* FOOTER */
 footer {
     padding: 40px 10%;
-    color: #777;
+    color: #666;
     border-top: 1px solid #222;
-}
-
-/* ANIMATION */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
+<div class="nav">
+    <div>Dorsey Films</div>
+    <div>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
-    <video autoplay muted loop playsinline>
-        <source src="https://cdn.coverr.co/videos/coverr-cinematic-shot-of-a-man-walking-1606/1080p.mp4" type="video/mp4">
+    <video autoplay muted loop>
+        <source src="https://cdn.coverr.co/videos/coverr-cinematic-shot-of-a-man-walking-1606/1080p.mp4">
     </video>
     <div class="overlay"></div>
 
     <div class="hero-content">
         <h1>Dorsey Films</h1>
-        <p>Stories told in silence, tension, and truth.</p>
-        <a href="#work" class="btn">Explore Work</a>
+        <p>Stories built on silence, tension, and truth.</p>
+        <div class="btn" onclick="openModal()">Watch Reel</div>
     </div>
 </div>
 
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="close" onclick="closeModal()">×</div>
+    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
+</div>
+
+<!-- WORK -->
 <section id="work" class="section">
-    <h2>Selected Monologues</h2>
+    <h2>Selected Writing</h2>
 
-    <div class="monologue">
-        “You don’t realize you’re changing… until the person you used to be feels like a stranger.”
-    </div>
-
-    <div class="monologue">
-        “It’s not the noise that breaks you… it’s the quiet moments when everything finally catches up.”
-    </div>
-
-    <div class="monologue">
-        “I stopped explaining myself… not because I had nothing to say, but because no one was listening.”
-    </div>
+    <div class="monologue">“You don’t lose people all at once… it happens quietly.”</div>
+    <div class="monologue">“I stopped explaining myself… no one was listening.”</div>
+    <div class="monologue">“Some endings don’t come with closure… just silence.”</div>
 </section>
 
+<!-- SERVICES -->
 <section class="section">
-    <h2>What We Do</h2>
+    <h2>Services</h2>
 
     <div class="grid">
-        <div class="card">
-            <h3>Film Production</h3>
-            <p>Visual storytelling with emotional depth.</p>
-        </div>
-
-        <div class="card">
-            <h3>Editing</h3>
-            <p>Precision, pacing, and cinematic rhythm.</p>
-        </div>
-
-        <div class="card">
-            <h3>Creative Direction</h3>
-            <p>Turning ideas into powerful visual narratives.</p>
-        </div>
+        <div class="card"><h3>Production</h3><p>Cinematic storytelling.</p></div>
+        <div class="card"><h3>Editing</h3><p>Emotion-driven cuts.</p></div>
+        <div class="card"><h3>Direction</h3><p>Vision to reality.</p></div>
     </div>
 </section>
 
-<section class="section">
+<!-- ABOUT -->
+<section id="about" class="section">
     <h2>About</h2>
-    <p style="max-width:600px; color:#bbb;">
-        Dorsey Films focuses on minimal, cinematic storytelling — where every frame carries weight,
-        and every silence speaks.
+    <p style="max-width:600px;color:#bbb;">
+        Dorsey Films is a creative studio focused on emotional realism and minimal storytelling.
     </p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Start a Project</h2>
+
+    <form>
+        <input placeholder="Your Name">
+        <input placeholder="Email">
+        <textarea rows="5" placeholder="Tell us about your project..."></textarea>
+        <button class="btn">Send</button>
+    </form>
 </section>
 
 <footer>
@@ -205,16 +241,13 @@ footer {
 </footer>
 
 <script>
-const sections = document.querySelectorAll('.section');
+function openModal(){
+    document.getElementById("modal").style.display = "flex";
+}
 
-window.addEventListener('scroll', () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            sec.classList.add('show');
-        }
-    });
-});
+function closeModal(){
+    document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
