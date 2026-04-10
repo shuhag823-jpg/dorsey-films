@@ -5,47 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dorsey Films</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0b0b0b;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a;
     color: white;
 }
 
-header {
+/* HERO */
+.hero {
     height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,1)),
+    url('https://images.unsplash.com/photo-1517602302552-471fe67acf66');
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(black, #111);
-    text-align: center;
+    text-align: center;    
 }
 
-header h1 {
-    font-size: 3.5rem;
+.hero h1 {
+    font-size: 4rem;
+    letter-spacing: 2px;
 }
 
-header p {
-    color: #aaa;
+.hero p {
+    color: #ccc;
     max-width: 500px;
 }
 
 .btn {
     margin-top: 20px;
-    padding: 12px 25px;
-    background: white;
-    color: black;
+    padding: 14px 30px;
+    background: #e50914;
+    color: white;
+    border-radius: 5px;
     text-decoration: none;
-    border-radius: 6px;
+    font-weight: bold;
 }
 
+/* SECTION */
 .section {
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
+.section h2 {
+    margin-bottom: 40px;
+}
+
+/* GRID */
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -53,13 +67,31 @@ header p {
 }
 
 .card {
-    background: #1a1a1a;
+    width: 300px;
     margin: 15px;
-    padding: 20px;
     border-radius: 10px;
-    width: 280px;
+    overflow: hidden;
+    background: #111;
+    transition: 0.3s;
 }
 
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* VIDEO THUMB */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card p {
+    padding: 15px;
+    color: #ccc;
+}
+
+/* FOOTER */
 footer {
     text-align: center;
     padding: 30px;
@@ -70,51 +102,51 @@ footer {
 
 <body>
 
-<header>
-    <h1>Dorsey Films</h1>
-    <p>We create cinematic stories that leave a lasting impact.</p>
-    <a href="#demo" class="btn">View Work</a>
-</header>
+<div class="hero">
+    <h1>DORSEY FILMS</h1>
+    <p>Cinematic storytelling that captures emotion, tension, and reality.</p>
+    <a href="#work" class="btn">View Work</a>
+</div>
 
-<section id="demo" class="section">
-    <h2>Featured Monologues</h2>
+<section id="work" class="section">
+    <h2>Featured Work</h2>
 
     <div class="grid">
+
         <div class="card">
-            <p>"I don’t chase dreams… I build them."</p>
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+            <p>"I became what I once feared."</p>
         </div>
 
         <div class="card">
-            <p>"Silence speaks louder than fear."</p>
+            <img src="https://images.unsplash.com/photo-1497032205916-ac775f0649ae">
+            <p>"Silence is louder than chaos."</p>
         </div>
 
         <div class="card">
-            <p>"Every shadow has a story."</p>
+            <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4">
+            <p>"Every frame tells a story."</p>
         </div>
+
     </div>
 </section>
 
 <section class="section">
-    <h2>Our Services</h2>
+    <h2>Services</h2>
 
     <div class="grid">
-        <div class="card">🎬 Film Production</div>
-        <div class="card">✂️ Video Editing</div>
-        <div class="card">🧠 Story Development</div>
+        <div class="card"><p>🎬 Film Production</p></div>
+        <div class="card"><p>✂️ Video Editing</p></div>
+        <div class="card"><p>🎭 Cinematic Direction</p></div>
     </div>
 </section>
 
 <section class="section">
-    <h2>About Us</h2>
+    <h2>About</h2>
     <p>
-        Dorsey Films is a creative studio focused on cinematic storytelling,
-        short films, and emotional visuals that connect with audiences.
+        Dorsey Films is a creative studio focused on powerful visuals, emotional storytelling,
+        and cinematic excellence.
     </p>
-</section>
-
-<section class="section">
-    <h2>Contact</h2>
-    <p>Email: contact@dorseyfilms.com</p>
 </section>
 
 <footer>
