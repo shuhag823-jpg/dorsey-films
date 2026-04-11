@@ -1,892 +1,1330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Dorsey Films — Independent film production studio. We make what refuses to fade.">
-<title>Dorsey Films</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Dorsey Films — Detroit's Premier Film Production & Talent Discovery</title>
+<meta name="description" content="Dorsey Films is Detroit's leading film production and talent discovery platform, founded by Peirre Doresy."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ============================================================
+   DORSEY FILMS — Full Cinematic Stylesheet (Inlined)
+   ============================================================ */
 :root{
-  --ink:#08070a;--ink2:#0f0e12;--ink3:#161419;--ink4:#1e1c23;
-  --veil:#2a2730;--smoke:#3d3a46;--ash:#7a7585;--mist:#b0aab8;
-  --fog:#d4cedd;--cream:#ede8e1;
-  --gold:#c8a96e;--gold2:#a8894e;--gold3:#e8c98e;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-  --mono:'DM Mono',monospace;
-  --ease:cubic-bezier(.25,.46,.45,.94);
-  --ease2:cubic-bezier(.16,1,.3,1);
+  --black:#080809;--deep:#0e0e10;--dark:#141416;--card:#18181b;
+  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
+  --white:#fff;--cream:#f5f0e8;--gold:#c9a84c;--gold2:#e2c57a;
+  --goldx:rgba(201,168,76,.14);--gray4:#9b9b9b;--gray6:#5a5a5a;
+  --red:#c0392b;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'Cormorant Garamond',Georgia,serif;
+  --fm:'Space Mono',monospace;
+  --nav:76px;--gap:110px;--cw:1280px;
+  --silk:cubic-bezier(.16,1,.3,1);--out:cubic-bezier(.25,.46,.45,.94);
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--ink);color:var(--cream);font-family:var(--sans);font-weight:300;line-height:1.7;overflow-x:hidden}
-::selection{background:var(--gold);color:var(--ink)}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--ink)}
-::-webkit-scrollbar-thumb{background:var(--gold2)}
-body::before{content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px 180px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;background:var(--black);color:var(--cream)}
+body{font-family:var(--fb);font-size:1.1rem;line-height:1.75;background:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+select,input,textarea{font-family:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:99px}
+::selection{background:var(--goldx);color:var(--gold)}
+.container{max-width:var(--cw);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+.section{padding:var(--gap) 0;position:relative}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.8rem 4rem;transition:padding .5s var(--ease),background .5s}
-nav.s{padding:1.1rem 4rem;background:rgba(8,7,10,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(200,169,110,.08)}
-.nav-logo{font-family:var(--serif);font-size:1.25rem;font-weight:500;letter-spacing:.06em;color:var(--cream);text-decoration:none}
-.nav-logo span{color:var(--gold)}
-.nav-links{display:flex;list-style:none;gap:2.8rem;align-items:center}
-.nav-links a{font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ash);text-decoration:none;transition:color .3s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .35s var(--ease)}
-.nav-links a:hover{color:var(--cream)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{padding:.55rem 1.4rem !important;border:1px solid rgba(200,169,110,.4) !important;color:var(--gold) !important;transition:background .3s,color .3s !important}
-.nav-cta:hover{background:var(--gold) !important;color:var(--ink) !important}
-.nav-cta::after{display:none !important}
-.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:600}
-.burger span{display:block;width:22px;height:1px;background:var(--cream);transition:.4s var(--ease)}
-.burger.o span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.burger.o span:nth-child(2){opacity:0}
-.burger.o span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+/* GRAIN */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.028;pointer-events:none;z-index:9999}
 
-/* HERO */
-#hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-scene{position:absolute;inset:0;background:var(--ink)}
-.hero-svg{position:absolute;inset:0;width:100%;height:100%}
-.dust{animation:dustF 6s ease-in-out infinite}
-.dust:nth-child(2){animation-delay:1.2s;animation-duration:7.5s}
-.dust:nth-child(3){animation-delay:2.4s;animation-duration:5.8s}
-.dust:nth-child(4){animation-delay:.6s;animation-duration:8s}
-.dust:nth-child(5){animation-delay:3s;animation-duration:6.5s}
-@keyframes dustF{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(-14px);opacity:1}}
-.hero-content{position:relative;z-index:2;padding:0 4rem 6rem;max-width:900px}
-.hero-label{font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;opacity:0;transform:translateY(16px);animation:fUp .9s .4s forwards}
-.hero-title{font-family:var(--serif);font-size:clamp(3.2rem,7.5vw,6.5rem);font-weight:400;line-height:1.02;margin-bottom:1.6rem;opacity:0;transform:translateY(24px);animation:fUp 1.1s .65s forwards}
-.hero-title em{font-style:italic;color:var(--gold)}
-.hero-sub{font-size:1rem;font-weight:300;color:rgba(212,206,221,.55);max-width:440px;line-height:1.85;margin-bottom:2.8rem;opacity:0;transform:translateY(16px);animation:fUp .9s .9s forwards}
-.hero-btns{display:flex;align-items:center;gap:1.8rem;opacity:0;transform:translateY(14px);animation:fUp .9s 1.1s forwards}
-.btn-gold{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:var(--gold);color:var(--ink);font-family:var(--sans);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;transition:background .3s,transform .3s}
-.btn-gold:hover{background:var(--gold3);transform:translateY(-2px)}
-.btn-line{font-size:.68rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(212,206,221,.5);text-decoration:none;display:flex;align-items:center;gap:.7rem;transition:color .3s}
-.btn-line:hover{color:var(--cream)}
-.btn-line svg{transition:transform .3s}
-.btn-line:hover svg{transform:translateX(4px)}
-.hero-meta{position:absolute;bottom:2.5rem;right:4rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fIn 1s 1.5s forwards}
-.hero-meta span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);writing-mode:vertical-lr}
-.scroll-track{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sPulse 2.2s ease-in-out infinite}
-@keyframes sPulse{0%,100%{opacity:1}50%{opacity:.3}}
-.hero-year{position:absolute;top:50%;right:4rem;z-index:1;transform:translateY(-50%);font-family:var(--serif);font-size:8vw;font-weight:300;color:rgba(200,169,110,.04);letter-spacing:-.03em;pointer-events:none;user-select:none;opacity:0;animation:fIn 2s 1.2s forwards}
-@keyframes fUp{to{opacity:1;transform:translateY(0)}}
-@keyframes fIn{to{opacity:1}}
+/* REVEALS */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s var(--silk),transform .8s var(--silk)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.rv.d4{transition-delay:.45s}.rv.d5{transition-delay:.6s}
+.rv.on{opacity:1!important;transform:translateY(0)!important}
 
-/* SECTIONS */
-section{padding:8rem 4rem}
-.s-label{font-size:.62rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
-.s-title{font-family:var(--serif);font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:400;line-height:1.1;margin-bottom:1.4rem}
-.s-intro{font-size:1rem;font-weight:300;color:var(--ash);max-width:500px;line-height:1.9}
-hr.rule{border:none;border-top:1px solid rgba(212,206,221,.06);margin:0 4rem}
-.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease2),transform .9s var(--ease2)}
-.rv.vis{opacity:1;transform:translateY(0)}
-.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.22s}.rv.d3{transition-delay:.34s}.rv.d4{transition-delay:.48s}.rv.d5{transition-delay:.62s}
+/* EYEBROW */
+.eyebrow{font-family:var(--fm);font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.75rem}
+.sec-title{font-family:var(--fd);font-size:clamp(2.1rem,4.5vw,3.4rem);font-weight:700;line-height:1.15;color:var(--cream);margin-bottom:1.1rem}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:1.05rem;color:var(--gray4);max-width:580px;margin:0 auto;font-weight:300}
+.sec-head{text-align:center;margin-bottom:3.5rem}
+.gold-rule{display:block;width:32px;height:1px;background:var(--gold);margin:.5rem 0;transform:scaleX(0);transform-origin:left;transition:transform .8s var(--silk) .25s}
+.gold-rule.on{transform:scaleX(1)}
+.sec-head .gold-rule{margin:.5rem auto}
 
-/* REEL */
-#reel{background:var(--ink2);text-align:center}
-.reel-head{max-width:560px;margin:0 auto 3.5rem}
-.video-wrap{position:relative;max-width:960px;margin:0 auto;background:var(--ink3);border:1px solid rgba(200,169,110,.12)}
-.video-wrap::before{content:'';display:block;padding-top:56.25%}
-.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.video-stamp{margin-top:1.2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--smoke)}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2.25rem;font-family:var(--fm);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;transition:all .3s var(--out);position:relative;overflow:hidden}
+.btn-p{background:var(--gold);color:var(--black);font-weight:700}
+.btn-p:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.35)}
+.btn-o{border:1px solid rgba(255,255,255,.3);color:var(--cream)}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.btn-full{width:100%;justify-content:center;margin-top:.5rem}
 
-/* PROJECTS */
-#projects{background:var(--ink)}
-.proj-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem}
-.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(212,206,221,.05);border:1px solid rgba(212,206,221,.05)}
-.proj-card{background:var(--ink);overflow:hidden;position:relative}
-.proj-card:first-child{grid-row:span 2}
-.proj-thumb{overflow:hidden}
-.proj-card:first-child .proj-thumb{height:100%;min-height:500px}
-.proj-thumb{height:280px}
-.proj-svg-wrap{width:100%;height:100%;transition:transform .7s var(--ease2)}
-.proj-card:hover .proj-svg-wrap{transform:scale(1.04)}
-.proj-info{padding:1.8rem 2rem 2rem;border-top:1px solid rgba(212,206,221,.05)}
-.proj-type{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
-.proj-name{font-family:var(--serif);font-size:1.5rem;font-weight:500;margin-bottom:.6rem;color:var(--cream)}
-.proj-desc{font-size:.85rem;font-weight:300;color:var(--ash);line-height:1.75}
-.proj-arrow{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.1rem;font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap .3s}
-.proj-arrow:hover{gap:.9rem}
-.proj-card:first-child .proj-name{font-size:2rem}
-.proj-card:first-child .proj-info{padding:2.2rem 2.4rem 2.4rem}
+/* ── NAVBAR ──────────────────────────────── */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav);transition:background .4s,backdrop-filter .4s,box-shadow .4s}
+.navbar.scrolled{background:rgba(8,8,9,.93);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
+.nav-c{max-width:var(--cw);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem);height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:.6rem}
+.logo-df{width:38px;height:38px;background:var(--gold);color:var(--black);font-family:var(--fd);font-weight:900;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-txt{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--cream);letter-spacing:.03em}
+.nav-links{display:flex;align-items:center;gap:.15rem}
+.nav-a{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray4);padding:.5rem .7rem;transition:color .3s;position:relative}
+.nav-a::after{content:'';position:absolute;bottom:0;left:.7rem;right:.7rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--out)}
+.nav-a:hover,.nav-a.active{color:var(--cream)}
+.nav-a:hover::after,.nav-a.active::after{transform:scaleX(1)}
+.nav-cta{background:var(--goldx);color:var(--gold)!important;border:1px solid rgba(201,168,76,.3);border-radius:2px}
+.nav-cta:hover{background:var(--gold);color:var(--black)!important}
+.nav-cta::after{display:none}
+.hburg{display:none;flex-direction:column;gap:5px;padding:4px}
+.hburg span{display:block;width:24px;height:1.5px;background:var(--cream);transition:all .3s}
+.hburg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hburg.open span:nth-child(2){opacity:0}
+.hburg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-/* MONOLOGUES */
-#monologues{background:var(--ink2)}
-.mono-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-bottom:5rem}
-.mono-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(212,206,221,.06)}
-.mono-card{padding:3rem;border-right:1px solid rgba(212,206,221,.06);border-bottom:1px solid rgba(212,206,221,.06);transition:background .4s}
-.mono-card:hover{background:rgba(200,169,110,.025)}
-.mono-card:nth-child(even){border-right:none}
-.mono-card.wide{grid-column:1/-1;border-right:none;border-bottom:none}
-.mono-num{font-family:var(--mono);font-size:.62rem;color:var(--gold);opacity:.6;margin-bottom:1.4rem;display:block;letter-spacing:.12em}
-.mono-title{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--fog);margin-bottom:1.2rem}
-.mono-text{font-size:.9rem;font-weight:300;color:rgba(176,170,184,.55);line-height:1.9;font-style:italic}
-.mono-credit{display:block;margin-top:1.4rem;font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(200,169,110,.45)}
+/* ── HERO ──────────────────────────────────── */
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding-bottom:8vh}
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:hzoom 22s ease-in-out infinite alternate;transform-origin:center}
+@keyframes hzoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,9,.55) 0%,rgba(8,8,9,.15) 35%,rgba(8,8,9,.72) 70%,rgba(8,8,9,.97) 100%)}
+.hero-con{position:relative;z-index:2;max-width:var(--cw);margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem);width:100%}
+.hero-title{font-family:var(--fd);font-size:clamp(3.2rem,8vw,7rem);font-weight:900;line-height:1.0;color:var(--white);max-width:800px}
+.hero-line{display:block}
+.hero-em{display:block;font-style:italic;color:var(--gold);font-weight:400}
+.hero-tag{font-size:clamp(1rem,1.8vw,1.15rem);color:rgba(245,240,232,.75);max-width:510px;line-height:1.7;margin:1.6rem 0 2rem;font-weight:300}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-stats{display:flex;align-items:center;gap:2rem}
+.stat{display:flex;flex-direction:column}
+.stat-n{font-family:var(--fd);font-size:2rem;font-weight:900;color:var(--gold);line-height:1}
+.stat-l{font-family:var(--fm);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray4);margin-top:.2rem}
+.stat-div{width:1px;height:36px;background:var(--border2)}
+.scroll-hint{position:absolute;right:clamp(1.25rem,5vw,3rem);bottom:3rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.scroll-hint span{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray4);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);animation:spulse 2.5s ease-in-out infinite}
+@keyframes spulse{0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
-/* TEAM */
-#team{background:var(--ink)}
-.team-header{max-width:560px;margin-bottom:4.5rem}
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(212,206,221,.05)}
-.team-card{padding:2rem;border-right:1px solid rgba(212,206,221,.05);position:relative;overflow:hidden;transition:background .4s}
-.team-card:last-child{border-right:none}
-.team-card:hover{background:rgba(200,169,110,.02)}
-.team-avatar{width:100%;aspect-ratio:1;margin-bottom:1.6rem;overflow:hidden}
-.team-role{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
-.team-name{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--cream);margin-bottom:.8rem}
-.team-bio{font-size:.8rem;font-weight:300;color:var(--ash);line-height:1.8}
+/* ── ABOUT ─────────────────────────────────── */
+.about{background:var(--deep)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-imgw{position:relative}
+.about-img{height:560px;object-fit:cover;filter:grayscale(20%);transition:filter .5s;width:100%}
+.about-imgw:hover .about-img{filter:grayscale(0%)}
+.img-cap{position:absolute;bottom:1.25rem;left:1.25rem;font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray4);background:rgba(8,8,9,.85);padding:.45rem .8rem;backdrop-filter:blur(8px)}
+.img-acc{position:absolute;top:-1.5rem;right:-1.5rem;background:var(--gold);color:var(--black);padding:1.4rem;text-align:center;display:flex;flex-direction:column}
+.acc-yr{font-family:var(--fd);font-size:2.4rem;font-weight:900;line-height:1}
+.acc-lb{font-family:var(--fm);font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;margin-top:.35rem;opacity:.8}
+.about-txt{color:rgba(245,240,232,.72);margin-bottom:1.15rem;font-size:1.08rem;font-weight:300}
+.about-txt strong{color:var(--cream);font-weight:600}
+.founder-box{display:flex;align-items:center;gap:1.2rem;margin-top:2.25rem;padding:1.4rem;border:1px solid var(--border);background:var(--card)}
+.founder-img{width:70px;height:70px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--gold)}
+.f-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--cream)}
+.f-title{font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:.2rem 0}
+.f-quote{font-style:italic;color:var(--gray4);font-size:.92rem;margin-top:.3rem}
+.f-quote em{color:var(--gold);font-style:normal}
 
-/* SERVICES */
-#services{background:var(--ink2)}
-.srv-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:7rem;align-items:start}
-.srv-stick{position:sticky;top:8rem}
-.srv-list{display:flex;flex-direction:column}
-.srv-item{padding:2.4rem 0;border-top:1px solid rgba(212,206,221,.07);display:grid;grid-template-columns:2.2rem 1fr;gap:1.4rem}
-.srv-item:last-child{border-bottom:1px solid rgba(212,206,221,.07)}
-.srv-n{font-family:var(--mono);font-size:.7rem;color:var(--gold);opacity:.55;padding-top:.15rem}
-.srv-name{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--cream);margin-bottom:.7rem}
-.srv-desc{font-size:.85rem;font-weight:300;color:var(--ash);line-height:1.8}
-.srv-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.tag{font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,169,110,.22);padding:.25rem .65rem}
+/* ── PRODUCTIONS ──────────────────────────── */
+.productions{background:var(--black)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.film-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:transform .4s var(--silk),box-shadow .4s}
+.film-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.6)}
+.film-post{position:relative;height:230px;overflow:hidden}
+.film-post img{transition:transform .6s var(--silk);height:100%;width:100%;object-fit:cover}
+.film-card:hover .film-post img{transform:scale(1.07)}
+.film-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent 60%);display:flex;align-items:flex-start;justify-content:flex-end;padding:.9rem}
+.badge{font-family:var(--fm);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;padding:.28rem .65rem}
+.b-rel{background:rgba(60,180,80,.18);color:#5ddb7e;border:1px solid rgba(60,180,80,.3)}
+.b-post{background:rgba(201,168,76,.18);color:var(--gold2);border:1px solid rgba(201,168,76,.3)}
+.b-prod{background:rgba(52,152,219,.18);color:#74bfe8;border:1px solid rgba(52,152,219,.3)}
+.b-dev{background:rgba(156,89,182,.18);color:#c39de8;border:1px solid rgba(156,89,182,.3)}
+.film-inf{padding:1.4rem}
+.film-genre{font-family:var(--fm);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.film-title{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--cream);margin-bottom:.65rem;line-height:1.25}
+.film-syn{color:var(--gray4);font-size:.92rem;line-height:1.65;font-weight:300;margin-bottom:.9rem}
+.film-meta{display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;border-top:1px solid var(--border);font-family:var(--fm);font-size:.62rem;letter-spacing:.08em;color:var(--gray6)}
+.film-rat{color:var(--gold)}
 
-/* ABOUT */
-#about{background:var(--ink3);overflow:hidden}
-.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
-.about-left{position:relative}
-.about-film{width:100%;aspect-ratio:3/4}
-.about-copy p{font-size:.98rem;font-weight:300;color:rgba(212,206,221,.6);line-height:1.95;margin-bottom:1.3rem}
-.about-copy strong{color:var(--cream);font-weight:400}
-.about-ghost{font-family:var(--serif);font-size:5.5rem;font-weight:300;color:rgba(200,169,110,.055);line-height:1;margin-bottom:.8rem;font-style:italic}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.8rem;padding-top:2.8rem;border-top:1px solid rgba(212,206,221,.07)}
-.stat-n{font-family:var(--serif);font-size:2.6rem;font-weight:400;color:var(--gold);display:block;line-height:1;margin-bottom:.35rem}
-.stat-l{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--smoke)}
+/* ── MONOLOGUES ───────────────────────────── */
+.monologues{background:var(--deep)}
+.mfilters{display:flex;justify-content:center;gap:.75rem;margin-bottom:3rem;flex-wrap:wrap}
+.mfbtn{font-family:var(--fm);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;padding:.48rem 1.2rem;border:1px solid var(--border);color:var(--gray4);background:transparent;transition:all .3s;cursor:pointer}
+.mfbtn:hover,.mfbtn.on{border-color:var(--gold);color:var(--gold);background:var(--goldx)}
+.mono-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
+.mono-card{background:var(--card);border:1px solid var(--border);padding:1.7rem;transition:border-color .3s,box-shadow .3s;opacity:0;transform:translateY(28px)}
+.mono-card.on{opacity:1;transform:translateY(0)}
+.mono-card:hover{border-color:var(--border2);box-shadow:0 8px 40px rgba(0,0,0,.4)}
+.mono-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.mono-tags{display:flex;gap:.45rem;align-items:center}
+.tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;padding:.23rem .55rem}
+.t-drama{background:rgba(192,57,43,.13);color:#e86c5e;border:1px solid rgba(192,57,43,.28)}
+.t-comedy{background:rgba(52,152,219,.13);color:#74bfe8;border:1px solid rgba(52,152,219,.28)}
+.t-dramedy{background:rgba(156,89,182,.13);color:#c39de8;border:1px solid rgba(156,89,182,.28)}
+.t-beg{background:rgba(60,180,80,.1);color:#5ddb7e;border:1px solid rgba(60,180,80,.22)}
+.t-int{background:rgba(201,168,76,.1);color:var(--gold2);border:1px solid rgba(201,168,76,.22)}
+.t-adv{background:rgba(192,57,43,.1);color:#e86c5e;border:1px solid rgba(192,57,43,.22)}
+.mono-dur{font-family:var(--fm);font-size:.62rem;color:var(--gray6);letter-spacing:.08em}
+.mono-title{font-family:var(--fd);font-size:1.25rem;font-weight:700;color:var(--cream);margin-bottom:.35rem}
+.mono-char{font-family:var(--fm);font-size:.62rem;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:1.1rem}
+.mono-script{color:rgba(245,240,232,.68);font-size:.96rem;line-height:1.8;font-weight:300;max-height:0;overflow:hidden;transition:max-height .6s var(--silk)}
+.mono-script.open{max-height:900px}
+.mono-script p{margin-bottom:.8rem}
+.mono-script em{font-style:italic;color:var(--gold2)}
+.mono-toggle{display:inline-block;margin-top:.8rem;font-family:var(--fm);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);cursor:pointer;transition:color .3s}
+.mono-toggle:hover{color:var(--gold2)}
+.mono-card:first-child .mono-script{max-height:900px}
 
-/* CONTACT */
-#contact{background:var(--ink)}
-.contact-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:7rem;align-items:start;margin-top:4rem}
-.contact-aside{position:sticky;top:8rem}
-.contact-detail{margin-top:2.5rem;display:flex;flex-direction:column;gap:1.6rem}
-.cd label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem}
-.cd a,.cd span{font-size:.9rem;font-weight:300;color:var(--ash);text-decoration:none;transition:color .3s}
-.cd a:hover{color:var(--cream)}
-form{display:flex;flex-direction:column;gap:1.4rem}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-.fg{display:flex;flex-direction:column;gap:.45rem}
-.fg label{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,206,221,.35)}
-.fg input,.fg select,.fg textarea{background:rgba(212,206,221,.03);border:1px solid rgba(212,206,221,.09);color:var(--cream);font-family:var(--sans);font-size:.88rem;font-weight:300;padding:.85rem 1.05rem;outline:none;transition:border-color .3s,background .3s;width:100%;appearance:none;-webkit-appearance:none}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(200,169,110,.45);background:rgba(200,169,110,.025)}
-.fg select option{background:var(--ink3)}
-.fg textarea{resize:vertical;min-height:120px}
-.f-footer{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.f-note{font-size:.72rem;color:var(--smoke)}
-.btn-send{background:transparent;border:1px solid rgba(200,169,110,.45);color:var(--gold);font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:.85rem 2rem;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
-.btn-send:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.f-success{display:none;text-align:center;padding:3.5rem 2rem;border:1px solid rgba(200,169,110,.18);background:rgba(200,169,110,.03)}
-.f-success.show{display:block}
-.f-success h3{font-family:var(--serif);font-size:1.8rem;font-style:italic;color:var(--gold);margin-bottom:.6rem}
-.f-success p{font-size:.85rem;color:var(--ash)}
+/* ── SUBMIT ──────────────────────────────── */
+.submit{position:relative;padding:var(--gap) 0;isolation:isolate}
+.submit-bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.submit-bg img{width:100%;height:100%;object-fit:cover}
+.submit-ov{position:absolute;inset:0;background:rgba(8,8,9,.88)}
+.submit-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:flex-start}
+.submit-desc{color:rgba(245,240,232,.65);font-size:1.02rem;margin:1.1rem 0 1.8rem;font-weight:300}
+.sub-perks{display:flex;flex-direction:column;gap:.7rem}
+.sub-perks li{font-size:.94rem;color:rgba(245,240,232,.62);display:flex;align-items:baseline;gap:.5rem}
+.form-box{background:var(--card);border:1px solid var(--border);padding:2.25rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.1rem}
+.fg label{font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray4)}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--cream);padding:.82rem 1.05rem;font-size:1rem;font-family:var(--fb);transition:border-color .25s;outline:none;width:100%;-webkit-appearance:none;border-radius:0}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239b9b9b' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+.fg select option{background:var(--dark);color:var(--cream)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:rgba(201,168,76,.04)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--gray6)}
+.upload-z{border:1px dashed var(--border2);padding:2.25rem;text-align:center;cursor:pointer;transition:border-color .25s,background .25s;background:rgba(255,255,255,.02)}
+.upload-z:hover{border-color:var(--gold);background:var(--goldx)}
+.upload-ico{font-size:1.4rem;color:var(--gold);margin-bottom:.6rem}
+.upload-t{font-family:var(--fm);font-size:.68rem;letter-spacing:.12em;color:var(--gray4);text-transform:uppercase}
+.upload-s{font-size:.82rem;color:var(--gray6);margin-top:.3rem}
+.upload-sel{display:none;margin-top:.65rem;padding:.7rem 1rem;background:var(--goldx);border:1px solid rgba(201,168,76,.3);font-family:var(--fm);font-size:.68rem;color:var(--gold);letter-spacing:.09em}
+.fsuccess{display:none;background:var(--card);border:1px solid rgba(60,180,80,.3);padding:2.75rem;text-align:center}
+.fsuccess .sico{font-size:2rem;color:var(--gold);margin-bottom:.9rem}
+.fsuccess h3{font-family:var(--fd);font-size:1.7rem;color:var(--cream);margin-bottom:.65rem}
+.fsuccess p{color:var(--gray4)}
 
-/* FOOTER */
-footer{background:var(--ink2);padding:2.5rem 4rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(212,206,221,.05);flex-wrap:wrap;gap:1rem}
-.f-logo{font-family:var(--serif);font-size:1rem;color:rgba(212,206,221,.25);letter-spacing:.05em}
-.f-copy{font-size:.65rem;color:var(--smoke);letter-spacing:.08em}
-.f-nav{display:flex;gap:2rem;list-style:none}
-.f-nav a{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color .3s}
-.f-nav a:hover{color:var(--gold)}
+/* ── ARTISTS ─────────────────────────────── */
+.artists{background:var(--black)}
+.art-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4rem}
+.art-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:transform .4s var(--silk),box-shadow .4s;opacity:0;transform:translateY(28px)}
+.art-card.on{opacity:1;transform:translateY(0)}
+.art-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.55)}
+.art-imgw{position:relative;height:270px;overflow:hidden}
+.art-imgw img{transition:transform .6s var(--silk),filter .5s;height:100%;width:100%;object-fit:cover;filter:grayscale(30%)}
+.art-card:hover .art-imgw img{transform:scale(1.06);filter:grayscale(0%)}
+.art-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,9,.9) 0%,transparent 60%);display:flex;align-items:flex-end;padding:1rem;opacity:0;transition:opacity .4s}
+.art-card:hover .art-ov{opacity:1}
+.art-style{font-family:var(--fm);font-size:.56rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gold)}
+.art-inf{padding:1.15rem}
+.art-name{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:.45rem}
+.art-bio{font-size:.86rem;color:var(--gray4);line-height:1.62;font-weight:300;margin-bottom:.8rem}
+.art-bio em{color:var(--gold2);font-style:italic}
+.art-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.art-tags span{font-family:var(--fm);font-size:.56rem;letter-spacing:.09em;text-transform:uppercase;color:var(--gray6);border:1px solid var(--border);padding:.18rem .45rem}
 
-/* RESPONSIVE */
-@media(max-width:1024px){
-  .team-grid{grid-template-columns:repeat(2,1fr)}
-  .team-card:nth-child(2){border-right:none}
-  .team-card:nth-child(3){border-top:1px solid rgba(212,206,221,.05);border-right:1px solid rgba(212,206,221,.05)}
-  .team-card:nth-child(4){border-top:1px solid rgba(212,206,221,.05);border-right:none}
-  .srv-layout{grid-template-columns:1fr;gap:4rem}
-  .srv-stick{position:static}
+/* ── CASTING ─────────────────────────────── */
+.casting{background:var(--deep)}
+.cast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
+.cast-card{background:var(--card);border:1px solid var(--border);padding:1.85rem;transition:border-color .3s;display:flex;flex-direction:column;opacity:0;transform:translateY(28px)}
+.cast-card.on{opacity:1;transform:translateY(0)}
+.cast-card:hover{border-color:var(--gold)}
+.cast-wide{grid-column:1/-1}
+.cast-proj{font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.cast-role{font-family:var(--fd);font-size:1.35rem;font-weight:700;color:var(--cream);margin-bottom:.9rem;line-height:1.25}
+.cast-desc{color:var(--gray4);font-size:.94rem;line-height:1.68;font-weight:300;margin-bottom:1.15rem;flex:1}
+.cast-details{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.35rem}
+.ctag{font-family:var(--fm);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gray4);border:1px solid var(--border);padding:.23rem .55rem}
+.cast-foot{display:flex;justify-content:space-between;align-items:center;padding-top:1.1rem;border-top:1px solid var(--border)}
+.cast-ddl{font-family:var(--fm);font-size:.6rem;letter-spacing:.09em;color:var(--gray6);text-transform:uppercase}
+.cast-apply{font-family:var(--fm);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);transition:color .3s}
+.cast-apply:hover{color:var(--gold2)}
+
+/* ── BLOG ────────────────────────────────── */
+.blog{background:var(--black)}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
+.blog-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:transform .4s var(--silk),box-shadow .4s;opacity:0;transform:translateY(28px)}
+.blog-card.on{opacity:1;transform:translateY(0)}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.blog-feat{grid-column:1/-1;display:grid;grid-template-columns:1.2fr 1fr}
+.blog-imgw{position:relative;height:230px;overflow:hidden}
+.blog-feat .blog-imgw{height:100%;min-height:280px}
+.blog-imgw img{transition:transform .6s var(--silk);height:100%;width:100%;object-fit:cover}
+.blog-card:hover .blog-imgw img{transform:scale(1.05)}
+.blog-cat{position:absolute;top:1rem;left:1rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--black);padding:.28rem .65rem;font-weight:700}
+.blog-con{padding:1.65rem;display:flex;flex-direction:column}
+.blog-date{font-family:var(--fm);font-size:.6rem;letter-spacing:.11em;color:var(--gray6);text-transform:uppercase;margin-bottom:.65rem}
+.blog-title{font-family:var(--fd);font-size:1.3rem;font-weight:700;color:var(--cream);line-height:1.25;margin-bottom:.8rem}
+.blog-feat .blog-title{font-size:1.65rem}
+.blog-exc{color:var(--gray4);font-size:.94rem;line-height:1.68;font-weight:300;flex:1;margin-bottom:1.1rem}
+.blog-read{font-family:var(--fm);font-size:.65rem;letter-spacing:.11em;text-transform:uppercase;color:var(--gold);transition:color .3s;align-self:flex-start}
+.blog-read:hover{color:var(--gold2)}
+
+/* ── CONTACT ─────────────────────────────── */
+.contact{background:var(--deep)}
+.cont-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:flex-start}
+.cont-desc{color:rgba(245,240,232,.65);font-size:1.02rem;margin:1.1rem 0 2.25rem;font-weight:300}
+.cont-info{display:flex;flex-direction:column;gap:1.4rem;margin-bottom:2.25rem}
+.cont-item{display:flex;align-items:flex-start;gap:1.15rem}
+.cont-ico{width:42px;height:42px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;flex-shrink:0;margin-top:2px}
+.cont-lbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray6);margin-bottom:.2rem}
+.cont-val{color:var(--cream);font-size:.97rem;transition:color .3s}
+a.cont-val:hover{color:var(--gold)}
+.social-row{display:flex;gap:.85rem;flex-wrap:wrap}
+.soc-a{font-family:var(--fm);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray4);padding:.48rem .85rem;border:1px solid var(--border);transition:all .3s}
+.soc-a:hover{color:var(--gold);border-color:var(--gold);background:var(--goldx)}
+
+/* ── FOOTER ──────────────────────────────── */
+.footer{background:var(--deep);border-top:1px solid var(--border);padding:4.5rem 0 2.25rem}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem}
+.footer-tag{color:var(--gray6);font-size:.92rem;line-height:1.7;font-weight:300;max-width:270px;margin-top:1rem}
+.fcol-t{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray4);margin-bottom:1.1rem}
+.fcol ul{display:flex;flex-direction:column;gap:.55rem}
+.fcol ul a{color:var(--gray6);font-size:.94rem;font-weight:300;transition:color .3s}
+.fcol ul a:hover{color:var(--gold)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:1.75rem;border-top:1px solid var(--border);flex-wrap:wrap;gap:1rem}
+.footer-copy{font-family:var(--fm);font-size:.62rem;letter-spacing:.09em;color:var(--gray6)}
+.footer-leg{display:flex;gap:1.4rem}
+.footer-leg a{font-family:var(--fm);font-size:.6rem;letter-spacing:.09em;color:var(--gray6);text-transform:uppercase;transition:color .3s}
+.footer-leg a:hover{color:var(--gold)}
+
+/* ── DIVIDER ─────────────────────────────── */
+.div-line{width:100%;height:1px;background:var(--border);margin:0}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media(max-width:1100px){
+  .art-grid{grid-template-columns:repeat(3,1fr)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:860px){
-  nav{padding:1.2rem 1.5rem}
-  nav.s{padding:.9rem 1.5rem}
-  .nav-links{display:none;position:fixed;inset:0;background:rgba(8,7,10,.97);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;z-index:499}
+@media(max-width:900px){
+  :root{--gap:75px}
+  .nav-links{display:none;flex-direction:column;gap:0;position:absolute;top:var(--nav);left:0;right:0;background:rgba(8,8,9,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:1rem 0}
   .nav-links.open{display:flex}
-  .nav-links.open a{font-size:1rem}
-  .burger{display:flex}
-  section{padding:5rem 1.5rem}
-  hr.rule{margin:0 1.5rem}
-  .hero-content{padding:0 1.5rem 4rem}
-  .hero-year{right:1.5rem;font-size:14vw}
-  .hero-meta{right:1.5rem}
-  .proj-grid{grid-template-columns:1fr}
-  .proj-card:first-child{grid-row:span 1}
-  .proj-card:first-child .proj-thumb{height:260px;min-height:auto}
-  .mono-intro{grid-template-columns:1fr;gap:2rem}
-  .mono-grid{grid-template-columns:1fr}
-  .mono-card{border-right:none}
-  .mono-card.wide{grid-column:auto;border-bottom:1px solid rgba(212,206,221,.06)}
-  .team-grid{grid-template-columns:1fr 1fr}
-  .about-layout{grid-template-columns:1fr;gap:3rem}
-  .contact-layout{grid-template-columns:1fr;gap:3.5rem}
-  .contact-aside{position:static}
-  .f-row{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center;padding:2rem 1.5rem}
+  .nav-a{padding:.85rem 2rem}
+  .nav-a::after{display:none}
+  .hburg{display:flex}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-img{height:380px}
+  .img-acc{top:-.8rem;right:-.5rem}
+  .submit-grid{grid-template-columns:1fr;gap:2.75rem}
+  .cont-grid{grid-template-columns:1fr;gap:2.75rem}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .art-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-feat{grid-column:1/-1;display:block}
+  .blog-feat .blog-imgw{height:230px}
 }
-@media(max-width:520px){
-  .team-grid{grid-template-columns:1fr}
-  .team-card{border-right:none !important;border-top:1px solid rgba(212,206,221,.05)}
-  .hero-btns{flex-direction:column;align-items:flex-start;gap:1.2rem}
-  .about-ghost{font-size:3.5rem}
-  .stats{grid-template-columns:1fr 1fr}
+@media(max-width:680px){
+  .hero-stats{gap:1.15rem}
+  .stat-n{font-size:1.5rem}
+  .prod-grid{grid-template-columns:1fr}
+  .mono-grid{grid-template-columns:1fr}
+  .cast-grid{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+  .art-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .footer-bot{flex-direction:column;align-items:flex-start}
+  .hero-acts{flex-direction:column}
+  .hero-acts .btn{width:100%;justify-content:center}
+  .cast-wide{grid-column:1/-1}
+}
+@media(max-width:400px){
+  .art-grid{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#hero" class="nav-logo">Dorsey <span>Films</span></a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#reel" onclick="cm()">Reel</a></li>
-    <li><a href="#projects" onclick="cm()">Work</a></li>
-    <li><a href="#team" onclick="cm()">Team</a></li>
-    <li><a href="#services" onclick="cm()">Services</a></li>
-    <li><a href="#about" onclick="cm()">About</a></li>
-    <li><a href="#contact" class="nav-cta" onclick="cm()">Contact</a></li>
-  </ul>
-  <button class="burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-c">
+    <a href="#home" class="nav-logo">
+      <span class="logo-df">DF</span>
+      <span class="logo-txt">Dorsey Films</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-a">Home</a></li>
+      <li><a href="#about" class="nav-a">About</a></li>
+      <li><a href="#productions" class="nav-a">Productions</a></li>
+      <li><a href="#monologues" class="nav-a">Monologues</a></li>
+      <li><a href="#casting" class="nav-a">Casting</a></li>
+      <li><a href="#artists" class="nav-a">Artists</a></li>
+      <li><a href="#blog" class="nav-a">Blog</a></li>
+      <li><a href="#contact" class="nav-a nav-cta">Contact</a></li>
+    </ul>
+    <button class="hburg" id="hburg" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-scene">
-    <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="hg1" cx="60%" cy="35%" r="55%"><stop offset="0%" stop-color="#1a1208" stop-opacity=".9"/><stop offset="100%" stop-color="#08070a" stop-opacity="0"/></radialGradient>
-        <radialGradient id="hg2" cx="15%" cy="75%" r="45%"><stop offset="0%" stop-color="#0a0e18" stop-opacity=".8"/><stop offset="100%" stop-color="#08070a" stop-opacity="0"/></radialGradient>
-        <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <rect width="1440" height="900" fill="#0a0810"/>
-      <rect width="1440" height="900" fill="url(#hg1)"/>
-      <rect width="1440" height="900" fill="url(#hg2)"/>
-      <line x1="0" y1="540" x2="1440" y2="540" stroke="rgba(200,169,110,.05)" stroke-width="1"/>
-      <ellipse cx="900" cy="520" rx="280" ry="30" fill="rgba(200,169,110,.07)" filter="url(#glow)"/>
-      <ellipse cx="400" cy="535" rx="180" ry="20" fill="rgba(150,140,170,.04)"/>
-      <polygon points="820,0 880,0 940,540 760,540" fill="rgba(200,169,110,.025)"/>
-      <polygon points="1100,0 1130,0 1180,540 1050,540" fill="rgba(200,169,110,.015)"/>
-      <rect x="0" y="0" width="1440" height="18" fill="rgba(8,7,10,.95)"/>
-      <rect x="0" y="882" width="1440" height="18" fill="rgba(8,7,10,.95)"/>
-      <line x1="0" y1="18" x2="1440" y2="18" stroke="rgba(200,169,110,.08)" stroke-width=".5"/>
-      <line x1="0" y1="882" x2="1440" y2="882" stroke="rgba(200,169,110,.08)" stroke-width=".5"/>
-      <text x="16" y="13" font-family="monospace" font-size="7" fill="rgba(200,169,110,.4)" letter-spacing="2">DORSEY.FILMS — FRAME 00001 — 24.00fps</text>
-      <text x="16" y="895" font-family="monospace" font-size="7" fill="rgba(200,169,110,.4)" letter-spacing="2">SERIES A — PRINT 01 — DCI 4K</text>
-      <circle class="dust" cx="620" cy="180" r="1.5" fill="rgba(200,169,110,.7)"/>
-      <circle class="dust" cx="980" cy="280" r="1" fill="rgba(200,169,110,.5)"/>
-      <circle class="dust" cx="340" cy="350" r="1.8" fill="rgba(200,169,110,.4)"/>
-      <circle class="dust" cx="1150" cy="150" r="1.2" fill="rgba(200,169,110,.6)"/>
-      <circle class="dust" cx="780" cy="420" r=".9" fill="rgba(200,169,110,.5)"/>
-      <!-- Camera on tripod silhouette -->
-      <g transform="translate(1060,340)" opacity=".16">
-        <rect x="-8" y="0" width="16" height="10" rx="2" fill="#c8a96e"/>
-        <rect x="-14" y="3" width="5" height="5" rx="1" fill="#c8a96e"/>
-        <rect x="8" y="4" width="8" height="3" rx="1" fill="#c8a96e"/>
-        <line x1="0" y1="10" x2="-18" y2="55" stroke="#c8a96e" stroke-width="1.5"/>
-        <line x1="0" y1="10" x2="18" y2="55" stroke="#c8a96e" stroke-width="1.5"/>
-        <line x1="0" y1="10" x2="0" y2="55" stroke="#c8a96e" stroke-width="1.5"/>
-        <line x1="-18" y1="55" x2="18" y2="55" stroke="#c8a96e" stroke-width="1.5"/>
-      </g>
-    </svg>
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-ov"></div>
+    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1920&q=80&auto=format&fit=crop" alt="Cinematic film production" loading="eager"/>
   </div>
-  <div class="hero-year">2016</div>
-  <div class="hero-content">
-    <p class="hero-label">Dorsey Films — Est. 2016</p>
-    <h1 class="hero-title">We make what<br><em>refuses to fade.</em></h1>
-    <p class="hero-sub">Every frame is a decision. Every cut carries a consequence. We build films that outlast the moment they were made for.</p>
-    <div class="hero-btns">
-      <a href="#reel" class="btn-gold">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5.5" stroke="currentColor"/><path d="M4.5 3.5L8.5 6L4.5 8.5V3.5Z" fill="currentColor"/></svg>
-        Watch Reel
-      </a>
-      <a href="#projects" class="btn-line">
-        View Our Work
-        <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1"/></svg>
-      </a>
+  <div class="hero-con">
+    <div class="eyebrow rv d1">Detroit · Est. 2018</div>
+    <h1 class="hero-title rv d2">
+      <span class="hero-line">Stories Worth</span>
+      <em class="hero-em">Telling.</em>
+      <span class="hero-line">Voices Worth</span>
+      <em class="hero-em">Hearing.</em>
+    </h1>
+    <p class="hero-tag rv d3">Dorsey Films discovers raw talent, produces fearless cinema, and gives Detroit's next generation of storytellers the stage they deserve.</p>
+    <div class="hero-acts rv d4">
+      <a href="#monologues" class="btn btn-p">Explore Monologues</a>
+      <a href="#submit" class="btn btn-o">Submit Talent</a>
+    </div>
+    <div class="hero-stats rv d5">
+      <div class="stat"><span class="stat-n" data-target="47">47</span><span class="stat-l">Productions</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-n" data-target="312">312</span><span class="stat-l">Artists Discovered</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><span class="stat-n" data-target="19">19</span><span class="stat-l">Film Festivals</span></div>
     </div>
   </div>
-  <div class="hero-meta">
-    <div class="scroll-track"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
-<hr class="rule">
-
-<!-- REEL -->
-<section id="reel">
-  <div class="reel-head rv">
-    <p class="s-label">Showreel 2024</p>
-    <h2 class="s-title">Eight years of<br><em style="font-style:italic">deliberate</em> work.</h2>
-    <p class="s-intro" style="margin:0 auto">This isn't a compilation of our best angles. It's a record of how we think, what we commit to, and the kinds of stories we choose to tell.</p>
-  </div>
-  <div class="video-wrap rv d2">
-    <iframe src="https://www.youtube.com/embed/LXb3EKWsInQ?rel=0&modestbranding=1&color=white" title="Dorsey Films Showreel 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-  </div>
-  <p class="video-stamp rv d3">DORSEY FILMS — SHOWREEL 2024 — PITTSBURGH, PA</p>
-</section>
-
-<hr class="rule">
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="proj-header rv">
-    <div>
-      <p class="s-label">Selected Work</p>
-      <h2 class="s-title" style="margin-bottom:0">Projects that<br>meant something.</h2>
-    </div>
-    <p style="font-size:.85rem;color:var(--ash);max-width:300px;line-height:1.8;font-weight:300">We take on work where the story matters more than the format. Below is a selection of recent productions.</p>
-  </div>
-  <div class="proj-grid rv">
-
-    <!-- Project 1 — large -->
-    <div class="proj-card">
-      <div class="proj-thumb">
-        <div class="proj-svg-wrap" style="height:100%">
-          <svg viewBox="0 0 600 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="p1g" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#1a1008"/><stop offset="100%" stop-color="#060508"/></radialGradient>
-              <radialGradient id="p1w" cx="42%" cy="20%" r="30%"><stop offset="0%" stop-color="#e8d09a" stop-opacity=".18"/><stop offset="100%" stop-color="#060508" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="600" height="600" fill="url(#p1g)"/>
-            <rect width="600" height="600" fill="url(#p1w)"/>
-            <polygon points="180,0 210,0 280,600 140,600" fill="rgba(200,169,110,.06)"/>
-            <polygon points="220,0 240,0 300,600 260,600" fill="rgba(200,169,110,.04)"/>
-            <rect x="0" y="430" width="600" height="170" fill="#050407"/>
-            <line x1="0" y1="430" x2="600" y2="430" stroke="rgba(212,206,221,.06)" stroke-width="1"/>
-            <!-- Figure: coat, standing -->
-            <rect x="270" y="210" width="26" height="8" rx="13" fill="#0e0b0d"/>
-            <ellipse cx="283" cy="185" rx="14" ry="17" fill="#100d0f"/>
-            <path d="M270,218 Q255,320 248,430" stroke="#0e0b0d" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M296,218 Q310,320 315,430" stroke="#0e0b0d" stroke-width="14" fill="none" stroke-linecap="round"/>
-            <path d="M258,260 Q235,290 220,320" stroke="#0e0b0d" stroke-width="9" fill="none" stroke-linecap="round"/>
-            <path d="M306,260 Q328,290 340,320" stroke="#0e0b0d" stroke-width="9" fill="none" stroke-linecap="round"/>
-            <path d="M296,187 Q302,200 308,218 Q320,240 316,260" stroke="rgba(200,169,110,.5)" stroke-width="1.5" fill="none"/>
-            <ellipse cx="283" cy="435" rx="36" ry="7" fill="#030204" opacity=".7"/>
-            <radialGradient id="v1" cx="50%" cy="50%" r="70%"><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="#040305" stop-opacity=".8"/></radialGradient>
-            <rect width="600" height="600" fill="url(#v1)"/>
-            <rect width="600" height="22" fill="#040305"/>
-            <rect y="578" width="600" height="22" fill="#040305"/>
-          </svg>
-        </div>
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgw rv">
+        <img class="about-img" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80&auto=format&fit=crop" alt="Dorsey Films behind the scenes"/>
+        <div class="img-cap">Detroit, 2018 — First Set</div>
+        <div class="img-acc"><span class="acc-yr">2018</span><span class="acc-lb">Founded in Detroit</span></div>
       </div>
-      <div class="proj-info">
-        <p class="proj-type">Feature Documentary — 94 min</p>
-        <h3 class="proj-name">The Distance Between Us</h3>
-        <p class="proj-desc">A documentary following three estranged siblings who return to their childhood home in rural West Virginia after their father's death. Shot over sixteen months, the film explores inheritance — not of property, but of silence, habit, and unspoken love. Premiered at True/False 2023. Currently streaming on MUBI.</p>
-        <a href="#contact" class="proj-arrow">Inquire About Licensing <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1"/></svg></a>
-      </div>
-    </div>
-
-    <!-- Project 2 -->
-    <div class="proj-card rv d1">
-      <div class="proj-thumb">
-        <div class="proj-svg-wrap" style="height:100%">
-          <svg viewBox="0 0 600 280" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs><radialGradient id="p2g" cx="70%" cy="40%" r="65%"><stop offset="0%" stop-color="#0c1018"/><stop offset="100%" stop-color="#07090e"/></radialGradient></defs>
-            <rect width="600" height="280" fill="url(#p2g)"/>
-            <rect x="0" y="160" width="600" height="120" fill="#060810"/>
-            <!-- Buildings -->
-            <rect x="30" y="95" width="40" height="65" fill="#080a0f"/><rect x="44" y="85" width="14" height="12" fill="#080a0f"/>
-            <rect x="90" y="120" width="55" height="40" fill="#090b10"/>
-            <rect x="160" y="80" width="30" height="80" fill="#080a0f"/><rect x="165" y="70" width="20" height="12" fill="#080a0f"/>
-            <rect x="210" y="100" width="60" height="60" fill="#090b10"/>
-            <rect x="280" y="60" width="25" height="100" fill="#080a0f"/>
-            <rect x="320" y="90" width="45" height="70" fill="#090b10"/>
-            <rect x="380" y="75" width="35" height="85" fill="#080a0f"/>
-            <rect x="430" y="105" width="50" height="55" fill="#090b10"/>
-            <rect x="495" y="85" width="40" height="75" fill="#080a0f"/>
-            <rect x="550" y="115" width="50" height="45" fill="#090b10"/>
-            <!-- Lights -->
-            <rect x="34" y="100" width="4" height="3" fill="rgba(200,169,110,.35)"/>
-            <rect x="166" y="88" width="3" height="3" fill="rgba(200,169,110,.4)"/>
-            <rect x="286" y="72" width="3" height="3" fill="rgba(200,169,110,.35)"/>
-            <rect x="500" y="94" width="4" height="3" fill="rgba(200,169,110,.4)"/>
-            <circle cx="510" cy="45" r="18" fill="#1a1810" stroke="rgba(200,169,110,.15)" stroke-width="1"/>
-            <circle cx="514" cy="42" r="14" fill="#12100f"/>
-            <radialGradient id="v2" cx="50%" cy="50%" r="70%"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="#040507" stop-opacity=".85"/></radialGradient>
-            <rect width="600" height="280" fill="url(#v2)"/>
-            <rect width="600" height="14" fill="#040507"/><rect y="266" width="600" height="14" fill="#040507"/>
-          </svg>
-        </div>
-      </div>
-      <div class="proj-info">
-        <p class="proj-type">Narrative Short — 22 min — 16mm</p>
-        <h3 class="proj-name">Night City, Quiet Hours</h3>
-        <p class="proj-desc">A night-shift security guard discovers a young woman sleeping in the lobby of the building he watches. Shot over four nights in downtown Pittsburgh on Kodak 500T. Winner, Best Cinematography — Pittsburgh Shorts 2022.</p>
-        <a href="#contact" class="proj-arrow">Learn More <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1"/></svg></a>
-      </div>
-    </div>
-
-    <!-- Project 3 -->
-    <div class="proj-card rv d2">
-      <div class="proj-thumb">
-        <div class="proj-svg-wrap" style="height:100%">
-          <svg viewBox="0 0 600 280" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="p3g" cx="30%" cy="50%" r="60%"><stop offset="0%" stop-color="#0d0c10"/><stop offset="100%" stop-color="#060508"/></radialGradient>
-              <radialGradient id="p3l" cx="55%" cy="30%" r="35%"><stop offset="0%" stop-color="#c8a96e" stop-opacity=".12"/><stop offset="100%" stop-color="#060508" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="600" height="280" fill="url(#p3g)"/>
-            <rect width="600" height="280" fill="url(#p3l)"/>
-            <rect x="0" y="170" width="600" height="110" fill="#0a0910"/>
-            <line x1="0" y1="170" x2="600" y2="170" stroke="rgba(212,206,221,.04)" stroke-width="1"/>
-            <!-- Table objects -->
-            <ellipse cx="200" cy="168" rx="20" ry="6" fill="#121018"/>
-            <rect x="180" y="145" width="40" height="24" rx="3" fill="#121018"/>
-            <rect x="218" y="152" width="10" height="10" rx="5" fill="none" stroke="#0e0c12" stroke-width="2"/>
-            <ellipse cx="200" cy="147" rx="16" ry="5" fill="#1a1620"/>
-            <rect x="280" y="150" width="120" height="20" rx="1" fill="#13111a" transform="rotate(-3,340,160)"/>
-            <rect x="285" y="145" width="115" height="20" rx="1" fill="#16141e" transform="rotate(2,342,155)"/>
-            <rect x="420" y="155" width="80" height="4" rx="2" fill="#1a1820" transform="rotate(-8,460,157)"/>
-            <polygon points="480,0 560,0 590,170 450,170" fill="rgba(200,169,110,.05)"/>
-            <circle cx="520" cy="30" r="12" fill="#1a1612"/>
-            <radialGradient id="v3" cx="50%" cy="50%" r="70%"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="#040305" stop-opacity=".8"/></radialGradient>
-            <rect width="600" height="280" fill="url(#v3)"/>
-            <rect width="600" height="14" fill="#040305"/><rect y="266" width="600" height="14" fill="#040305"/>
-          </svg>
-        </div>
-      </div>
-      <div class="proj-info">
-        <p class="proj-type">Brand Film — Commercial</p>
-        <h3 class="proj-name">Still Waters / Allegheny Coffee</h3>
-        <p class="proj-desc">A 3-minute brand film for Allegheny Coffee Roasters. Shot entirely in their original roastery, it follows the morning ritual of a longtime employee on her last day before retirement. Delivered 4.2M views organically across platforms.</p>
-        <a href="#contact" class="proj-arrow">View Case Study <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1"/></svg></a>
-      </div>
-    </div>
-
-    <!-- Project 4 -->
-    <div class="proj-card rv d3">
-      <div class="proj-thumb">
-        <div class="proj-svg-wrap" style="height:100%">
-          <svg viewBox="0 0 600 280" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="p4g" cx="50%" cy="45%" r="65%"><stop offset="0%" stop-color="#10100c"/><stop offset="100%" stop-color="#070707"/></radialGradient>
-              <radialGradient id="p4s" cx="50%" cy="10%" r="40%"><stop offset="0%" stop-color="#c8d8e8" stop-opacity=".1"/><stop offset="100%" stop-color="#070707" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="600" height="280" fill="url(#p4g)"/>
-            <rect width="600" height="280" fill="url(#p4s)"/>
-            <rect x="0" y="180" width="600" height="100" fill="#0a0c08"/>
-            <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(150,160,100,.08)" stroke-width="1"/>
-            <!-- Trees -->
-            <path d="M50,180 Q60,120 70,80 Q80,120 90,180Z" fill="#080908"/>
-            <rect x="65" y="180" width="8" height="25" fill="#070808"/>
-            <path d="M130,180 Q148,100 165,60 Q182,100 198,180Z" fill="#090a08"/>
-            <rect x="159" y="180" width="10" height="30" fill="#080908"/>
-            <path d="M500,180 Q515,110 528,70 Q542,110 555,180Z" fill="#090a08"/>
-            <path d="M560,180 Q572,130 580,100 Q588,130 598,180Z" fill="#080908"/>
-            <ellipse cx="300" cy="100" rx="250" ry="60" fill="rgba(180,190,210,.04)"/>
-            <ellipse cx="300" cy="80" rx="60" ry="20" fill="rgba(200,180,130,.08)"/>
-            <!-- Small figure -->
-            <ellipse cx="300" cy="174" rx="5" ry="10" fill="#0c0d0b"/>
-            <ellipse cx="300" cy="162" rx="4" ry="5" fill="#0d0e0c"/>
-            <radialGradient id="v4" cx="50%" cy="50%" r="70%"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="#050505" stop-opacity=".85"/></radialGradient>
-            <rect width="600" height="280" fill="url(#v4)"/>
-            <rect width="600" height="14" fill="#050505"/><rect y="266" width="600" height="14" fill="#050505"/>
-          </svg>
-        </div>
-      </div>
-      <div class="proj-info">
-        <p class="proj-type">Documentary Short — 38 min — SXSW 2023</p>
-        <h3 class="proj-name">Field Study</h3>
-        <p class="proj-desc">A retired botanist catalogues wildflowers in her home county before a proposed highway development destroys the land. Premiered SXSW 2023. Screened in eleven countries, acquired by PBS Independent Lens. Shortlisted, Academy Documentary Short.</p>
-        <a href="#contact" class="proj-arrow">Festival History <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M9 1L13 5L9 9" stroke="currentColor" stroke-width="1"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- MONOLOGUES -->
-<section id="monologues">
-  <div class="mono-intro">
-    <div class="rv">
-      <p class="s-label">Original Writing</p>
-      <h2 class="s-title">Voices we gave<br>space to breathe.</h2>
-    </div>
-    <p class="s-intro rv d2" style="padding-top:1rem">Excerpts from original screenplays, commissioned pieces, and personal projects developed within Dorsey Films. Each began as a feeling that needed a body — a specific voice in a specific room.</p>
-  </div>
-  <div class="mono-grid">
-    <div class="mono-card rv">
-      <span class="mono-num">01 — Before the Shift</span>
-      <h3 class="mono-title">The Toll Booth on Route 9</h3>
-      <p class="mono-text">"My father worked this same stretch for twenty-two years. Never complained, never called in sick. I used to think that made him strong. Now I'm not so sure it wasn't just fear — the quiet kind that doesn't have a name yet. The kind that looks like responsibility from far enough away."</p>
-      <span class="mono-credit">— Documentary Feature, 2022. Character: Frank Malone, 58.</span>
-    </div>
-    <div class="mono-card rv d1">
-      <span class="mono-num">02 — After the Diagnosis</span>
-      <h3 class="mono-title">What the Body Remembers</h3>
-      <p class="mono-text">"People keep telling me to fight. Like it's a war I chose. Like there's a version of this where I win by wanting it badly enough. But some things aren't about winning. Some things are just about staying in the room as long as you can — paying attention, not pretending the light isn't beautiful just because it's leaving."</p>
-      <span class="mono-credit">— Short Film, 2023. Character: Ruth Adeleke, 67.</span>
-    </div>
-    <div class="mono-card rv d1">
-      <span class="mono-num">03 — The Morning After</span>
-      <h3 class="mono-title">Fourteen Seconds of Silence</h3>
-      <p class="mono-text">"We'd been together so long I'd forgotten how to eat a meal alone without feeling watched. Not by her. By the person I used to be before I learned to share everything — the salt, the remote, the window seat, the dark."</p>
-      <span class="mono-credit">— Narrative Short, 2021. Character: David Asher, 44.</span>
-    </div>
-    <div class="mono-card rv d2">
-      <span class="mono-num">04 — The Return</span>
-      <h3 class="mono-title">Childhood Home, For Sale</h3>
-      <p class="mono-text">"The rooms are smaller than I remembered. The ceilings lower. I keep reaching for light switches that aren't there anymore. I don't know what I came looking for. I think I came to let it go. But grief doesn't work like a key — you don't just hand it over and get your hands back."</p>
-      <span class="mono-credit">— Documentary Essay, 2024. Voice: Carla Hendricks, 51.</span>
-    </div>
-    <div class="mono-card wide rv">
-      <span class="mono-num">05 — Overture</span>
-      <h3 class="mono-title">The First Take</h3>
-      <p class="mono-text">"Every film starts with someone willing to be uncomfortable — the director who doesn't know yet if the idea is good, the actor standing in a parking lot at 5am pretending it's 1987, the editor choosing which truth to keep. We do this because something in us believes that a story, told honestly, can reach across the distance between two strangers and make them feel — for one exact moment — less alone. That's the job. That's always been the job."</p>
-      <span class="mono-credit">— Brand Film, Dorsey Films Identity, 2024.</span>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- TEAM -->
-<section id="team">
-  <div class="team-header rv">
-    <p class="s-label">The Team</p>
-    <h2 class="s-title">The people<br>behind the frame.</h2>
-    <p class="s-intro">Small by design. Every person here has worked long enough to know what they care about — and what to turn down when it doesn't fit.</p>
-  </div>
-  <div class="team-grid">
-    <div class="team-card rv">
-      <div class="team-avatar">
-        <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="ta1" cx="45%" cy="35%" r="55%"><stop offset="0%" stop-color="#1a1510"/><stop offset="100%" stop-color="#0a0809"/></radialGradient></defs>
-          <rect width="200" height="200" fill="url(#ta1)"/>
-          <ellipse cx="100" cy="75" rx="28" ry="32" fill="#0f0d10"/>
-          <path d="M72,130 Q100,145 128,130 Q130,170 142,200 L58,200 Q70,170 72,130Z" fill="#0e0c0f"/>
-          <path d="M88,107 L100,118 L112,107" stroke="#1a1820" stroke-width="2" fill="none"/>
-          <path d="M126,68 Q132,80 130,100 Q135,112 128,125" stroke="rgba(200,169,110,.4)" stroke-width="1.5" fill="none"/>
-          <radialGradient id="tv1" cx="50%" cy="50%" r="70%"><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="#060508" stop-opacity=".8"/></radialGradient>
-          <rect width="200" height="200" fill="url(#tv1)"/>
-        </svg>
-      </div>
-      <p class="team-role">Director / Founder</p>
-      <h3 class="team-name">Peirre Dorsey</h3>
-      <p class="team-bio">Peirre founded Dorsey Films in 2016 after seven years as a cinematographer for hire. He directs all feature and documentary work, believing that the most important shot is always the one the script didn't write. Born in Pittsburgh, trained in Prague.</p>
-    </div>
-    <div class="team-card rv d1">
-      <div class="team-avatar">
-        <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="ta2" cx="55%" cy="30%" r="55%"><stop offset="0%" stop-color="#0e1218"/><stop offset="100%" stop-color="#080a0d"/></radialGradient></defs>
-          <rect width="200" height="200" fill="url(#ta2)"/>
-          <ellipse cx="100" cy="72" rx="26" ry="30" fill="#0f0e13"/>
-          <path d="M74,118 Q100,132 126,118 Q128,168 140,200 L60,200 Q72,168 74,118Z" fill="#0e0d12"/>
-          <path d="M74,60 Q74,42 100,40 Q126,42 126,60 L126,72 Q100,62 74,72Z" fill="#0c0b10"/>
-          <path d="M74,65 Q68,78 70,100 Q65,112 72,118" stroke="rgba(200,169,110,.4)" stroke-width="1.5" fill="none"/>
-          <radialGradient id="tv2" cx="50%" cy="50%" r="70%"><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="#060508" stop-opacity=".8"/></radialGradient>
-          <rect width="200" height="200" fill="url(#tv2)"/>
-        </svg>
-      </div>
-      <p class="team-role">Director of Photography</p>
-      <h3 class="team-name">Nadia Vasquez</h3>
-      <p class="team-bio">Nadia has shot every Dorsey Films project since 2018. Trained at ESCAC Barcelona, she spent four years operating on narrative features across Europe before returning stateside. She shoots on film whenever the budget allows — and doesn't apologize for either choice.</p>
-    </div>
-    <div class="team-card rv d2">
-      <div class="team-avatar">
-        <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="ta3" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#120e0a"/><stop offset="100%" stop-color="#090708"/></radialGradient></defs>
-          <rect width="200" height="200" fill="url(#ta3)"/>
-          <ellipse cx="100" cy="74" rx="25" ry="29" fill="#100f12"/>
-          <path d="M75,118 Q100,130 125,118 Q126,168 138,200 L62,200 Q74,168 75,118Z" fill="#0f0e11"/>
-          <rect x="80" y="70" width="16" height="11" rx="5" fill="none" stroke="rgba(200,169,110,.3)" stroke-width="1.2"/>
-          <rect x="104" y="70" width="16" height="11" rx="5" fill="none" stroke="rgba(200,169,110,.3)" stroke-width="1.2"/>
-          <line x1="96" y1="75" x2="104" y2="75" stroke="rgba(200,169,110,.3)" stroke-width="1"/>
-          <path d="M124,68 Q130,78 128,98 Q133,110 126,118" stroke="rgba(200,169,110,.35)" stroke-width="1.5" fill="none"/>
-          <radialGradient id="tv3" cx="50%" cy="50%" r="70%"><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="#060508" stop-opacity=".8"/></radialGradient>
-          <rect width="200" height="200" fill="url(#tv3)"/>
-        </svg>
-      </div>
-      <p class="team-role">Editor / Colorist</p>
-      <h3 class="team-name">James Okoro</h3>
-      <p class="team-bio">James joined in 2019 after cutting four independent features. He works primarily in DaVinci Resolve and believes the edit is the second screenplay. His color work has been recognized by the International Cinematographers Guild. He teaches documentary editing at Carnegie Mellon.</p>
-    </div>
-    <div class="team-card rv d3">
-      <div class="team-avatar">
-        <svg viewBox="0 0 200 200" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs><radialGradient id="ta4" cx="45%" cy="38%" r="55%"><stop offset="0%" stop-color="#0e1015"/><stop offset="100%" stop-color="#07080c"/></radialGradient></defs>
-          <rect width="200" height="200" fill="url(#ta4)"/>
-          <ellipse cx="100" cy="73" rx="27" ry="31" fill="#0f0e14"/>
-          <path d="M73,118 Q100,133 127,118 Q129,169 141,200 L59,200 Q71,169 73,118Z" fill="#0e0d13"/>
-          <path d="M73,58 Q80,45 100,42 Q120,45 127,58 Q125,50 100,46 Q75,50 73,58Z" fill="#0c0b11"/>
-          <path d="M73,66 Q67,78 69,100 Q64,114 73,118" stroke="rgba(200,169,110,.38)" stroke-width="1.5" fill="none"/>
-          <radialGradient id="tv4" cx="50%" cy="50%" r="70%"><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="#050507" stop-opacity=".8"/></radialGradient>
-          <rect width="200" height="200" fill="url(#tv4)"/>
-        </svg>
-      </div>
-      <p class="team-role">Sound Designer / Composer</p>
-      <h3 class="team-name">Elin Strand</h3>
-      <p class="team-bio">Originally from Gothenburg, Elin studied electroacoustic composition before moving into film sound. She has designed audio for fourteen shorts and three features. She believes the right silence is worth more than any music — and handles all original score and final mix for Dorsey Films.</p>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="srv-layout">
-    <div class="srv-stick">
-      <p class="s-label rv">What We Offer</p>
-      <h2 class="s-title rv d1">Craft at every<br>stage of<br>the process.</h2>
-      <p class="s-intro rv d2" style="margin-top:1.4rem">We don't hand off. The same people who develop your story are the ones who shoot, cut, and master it. Beginning to end.</p>
-    </div>
-    <div class="srv-list">
-      <div class="srv-item rv">
-        <span class="srv-n">01</span>
-        <div>
-          <h3 class="srv-name">Film Production</h3>
-          <p class="srv-desc">Full-service production from development through picture lock. We handle pre-production, casting, location management, crew assembly, and on-set direction with consistent attention regardless of scale. We've shot in seventeen states and three continents, on 16mm, Super 8, RED Monstro, and ARRI Alexa.</p>
-          <div class="srv-tags"><span class="tag">Narrative</span><span class="tag">Documentary</span><span class="tag">Commercial</span><span class="tag">Brand Film</span><span class="tag">Music Video</span></div>
-        </div>
-      </div>
-      <div class="srv-item rv d1">
-        <span class="srv-n">02</span>
-        <div>
-          <h3 class="srv-name">Post-Production & Editing</h3>
-          <p class="srv-desc">The edit is where a film is made or lost. Our editors work from assembly through final cut in close collaboration with directors at every stage. We deliver picture edits, color grades, sound design, original score, and full broadcast and theatrical delivery packages.</p>
-          <div class="srv-tags"><span class="tag">Picture Edit</span><span class="tag">Color Grading</span><span class="tag">Sound Design</span><span class="tag">Original Score</span><span class="tag">DCP Master</span></div>
-        </div>
-      </div>
-      <div class="srv-item rv d2">
-        <span class="srv-n">03</span>
-        <div>
-          <h3 class="srv-name">Creative Direction</h3>
-          <p class="srv-desc">For brands and organizations that need a sustained visual language, not just a single deliverable. We develop creative strategy from tone and casting through platform-specific execution — work built to remain coherent and recognizable as it scales across years and formats.</p>
-          <div class="srv-tags"><span class="tag">Visual Strategy</span><span class="tag">Campaign Dev</span><span class="tag">Tone & Voice</span><span class="tag">Art Direction</span></div>
-        </div>
-      </div>
-      <div class="srv-item rv d3">
-        <span class="srv-n">04</span>
-        <div>
-          <h3 class="srv-name">Script & Story Development</h3>
-          <p class="srv-desc">Sometimes the idea is there but the language isn't. Our development team works with independent filmmakers and clients to build screenplays, treatments, and pitch materials that are built to be shot — not just read. We also consult on existing scripts at any stage of development.</p>
-          <div class="srv-tags"><span class="tag">Screenwriting</span><span class="tag">Story Consulting</span><span class="tag">Pitch Deck</span><span class="tag">Treatment</span></div>
-        </div>
-      </div>
-      <div class="srv-item rv d4">
-        <span class="srv-n">05</span>
-        <div>
-          <h3 class="srv-name">Color Grading & Finishing</h3>
-          <p class="srv-desc">Available as a standalone service for productions we didn't shoot. James Okoro grades in DaVinci Resolve with a preference for retained texture and controlled contrast. We deliver in all broadcast, streaming, and DCI formats. Turnaround for short-form work is typically 5–10 business days from receipt of locked picture.</p>
-          <div class="srv-tags"><span class="tag">DaVinci Resolve</span><span class="tag">HDR / SDR</span><span class="tag">DCI 4K</span><span class="tag">Netflix Delivery</span></div>
+      <div>
+        <div class="eyebrow rv">Our Story</div>
+        <div class="gold-rule rv"></div>
+        <h2 class="sec-title rv">Born from <em>Detroit's</em><br/>Grit &amp; Grace</h2>
+        <p class="about-txt rv">Peirre Doresy didn't grow up with a film school education or industry connections. He grew up on the east side of Detroit with a camcorder, a library card, and an unshakable belief that the stories being lived on his block were worth more than anything Hollywood had produced in a decade.</p>
+        <p class="about-txt rv">In 2018, Dorsey Films was born in a converted warehouse in Midtown Detroit — part production studio, part talent incubator, part community sanctuary. What started as short-form docudramas capturing Detroit's post-industrial renaissance quickly evolved into a full-scale production company with international distribution deals and a talent pipeline that scouts from Detroit's high schools, community theaters, and neighborhood streets.</p>
+        <p class="about-txt rv">Our philosophy is simple: <strong>authentic storytelling requires authentic voices</strong>. We don't manufacture stars. We discover them, develop them, and give them the tools to illuminate the human experience on screen.</p>
+        <div class="founder-box rv">
+          <img class="founder-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Peirre Doresy"/>
+          <div>
+            <div class="f-name">Peirre Doresy</div>
+            <div class="f-title">Founder &amp; Executive Producer</div>
+            <div class="f-quote">"Detroit doesn't need a spotlight. Detroit <em>is</em> the spotlight."</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-layout">
-    <div class="about-left rv">
-      <div class="about-film">
-        <svg viewBox="0 0 420 560" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="ab1" cx="42%" cy="32%" r="55%"><stop offset="0%" stop-color="#1c1410"/><stop offset="100%" stop-color="#080608"/></radialGradient>
-            <radialGradient id="ab2" cx="58%" cy="25%" r="30%"><stop offset="0%" stop-color="#c8a96e" stop-opacity=".16"/><stop offset="100%" stop-color="#080608" stop-opacity="0"/></radialGradient>
-          </defs>
-          <rect width="420" height="560" fill="url(#ab1)"/>
-          <rect width="420" height="560" fill="url(#ab2)"/>
-          <!-- Film set scene -->
-          <rect x="0" y="390" width="420" height="170" fill="#060507"/>
-          <line x1="0" y1="390" x2="420" y2="390" stroke="rgba(212,206,221,.05)" stroke-width="1"/>
-          <!-- X marks on floor (film set tape) -->
-          <line x1="180" y1="200" x2="195" y2="215" stroke="rgba(200,169,110,.2)" stroke-width="1.5"/>
-          <line x1="195" y1="200" x2="180" y2="215" stroke="rgba(200,169,110,.2)" stroke-width="1.5"/>
-          <line x1="320" y1="280" x2="334" y2="294" stroke="rgba(200,169,110,.15)" stroke-width="1.5"/>
-          <line x1="334" y1="280" x2="320" y2="294" stroke="rgba(200,169,110,.15)" stroke-width="1.5"/>
-          <!-- Director's chair -->
-          <line x1="130" y1="390" x2="110" y2="290" stroke="#100e12" stroke-width="6"/>
-          <line x1="190" y1="390" x2="210" y2="290" stroke="#100e12" stroke-width="6"/>
-          <rect x="108" y="250" width="104" height="44" rx="2" fill="#14121a"/>
-          <rect x="118" y="255" width="84" height="34" fill="#0f0d14"/>
-          <line x1="130" y1="390" x2="155" y2="340" stroke="#100e12" stroke-width="4"/>
-          <line x1="190" y1="390" x2="165" y2="340" stroke="#100e12" stroke-width="4"/>
-          <line x1="155" y1="340" x2="165" y2="340" stroke="#100e12" stroke-width="4"/>
-          <text x="160" y="273" font-family="monospace" font-size="7" fill="rgba(200,169,110,.3)" text-anchor="middle" letter-spacing="1">DORSEY</text>
-          <!-- Monitor -->
-          <rect x="270" y="290" width="100" height="70" rx="3" fill="#0e0c14"/>
-          <rect x="275" y="295" width="90" height="60" fill="#0a0910"/>
-          <rect x="280" y="300" width="80" height="45" fill="#0d0b12"/>
-          <line x1="280" y1="318" x2="360" y2="318" stroke="rgba(200,169,110,.06)" stroke-width="1"/>
-          <rect x="285" y="306" width="30" height="8" fill="rgba(200,169,110,.08)"/>
-          <rect x="315" y="360" width="10" height="30" fill="#0e0c14"/>
-          <rect x="300" y="390" width="40" height="4" rx="2" fill="#0e0c14"/>
-          <!-- Figure pointing at monitor -->
-          <ellipse cx="160" cy="235" rx="18" ry="21" fill="#100e13"/>
-          <rect x="148" y="254" width="24" height="38" rx="2" fill="#0f0d12"/>
-          <path d="M172,268 Q230,275 268,310" stroke="#0f0d12" stroke-width="8" fill="none" stroke-linecap="round"/>
-          <path d="M176,228 Q183,238 180,256 Q186,266 172,268" stroke="rgba(200,169,110,.45)" stroke-width="1.5" fill="none"/>
-          <!-- Light stand -->
-          <line x1="50" y1="390" x2="50" y2="120" stroke="#0e0c12" stroke-width="3"/>
-          <line x1="50" y1="390" x2="30" y2="420" stroke="#0e0c12" stroke-width="2"/>
-          <line x1="50" y1="390" x2="70" y2="420" stroke="#0e0c12" stroke-width="2"/>
-          <rect x="20" y="100" width="60" height="40" rx="4" fill="#13111a"/>
-          <rect x="24" y="104" width="52" height="32" rx="2" fill="#1a1824"/>
-          <ellipse cx="50" cy="120" rx="20" ry="12" fill="rgba(200,169,110,.1)"/>
-          <polygon points="20,140 80,140 110,390 -10,390" fill="rgba(200,169,110,.035)"/>
-          <radialGradient id="abv" cx="50%" cy="50%" r="70%"><stop offset="55%" stop-color="transparent"/><stop offset="100%" stop-color="#050406" stop-opacity=".85"/></radialGradient>
-          <rect width="420" height="560" fill="url(#abv)"/>
-          <rect width="420" height="22" fill="#040305"/>
-          <rect y="538" width="420" height="22" fill="#040305"/>
-          <text x="12" y="16" font-family="monospace" font-size="6.5" fill="rgba(200,169,110,.35)" letter-spacing="2">DORSEY FILMS — PITTSBURGH PA — PRINT 01</text>
-          <text x="12" y="553" font-family="monospace" font-size="6.5" fill="rgba(200,169,110,.35)" letter-spacing="2">FRAME 00512 — 16mm KODAK 500T</text>
-        </svg>
-      </div>
-      <div style="position:absolute;inset:0;border:1px solid rgba(200,169,110,.18);transform:translate(14px,14px);z-index:-1;pointer-events:none"></div>
+<!-- ══════════════════ PRODUCTIONS ══════════════════ -->
+<section class="productions section" id="productions">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow rv">Our Work</div>
+      <div class="gold-rule rv"></div>
+      <h2 class="sec-title rv">Featured <em>Productions</em></h2>
+      <p class="sec-sub rv">Five films. Five perspectives on what it means to be human in America today.</p>
     </div>
-    <div class="about-copy">
-      <div class="about-ghost rv">2016</div>
-      <p class="s-label rv">Our Story</p>
-      <h2 class="s-title rv d1">Built on the belief<br>that <em style="font-style:italic">specificity</em><br>is everything.</h2>
-      <p class="rv d2"><strong>Dorsey Films was founded in a two-room studio in Pittsburgh's Strip District</strong> with one camera, a secondhand light kit, and a conviction that the stories closest to the truth are the ones that feel like nothing you've seen before.</p>
-      <p class="rv d3">Eight years later, the instinct is unchanged: find the frame nobody else would choose, stay in it long enough, and trust what happens. We've made films for independent artists, global nonprofits, major brands, and public television. The work varies. The standard doesn't.</p>
-      <p class="rv d4">We are a small studio by deliberate choice. We turn down work we're wrong for. We take on projects that scare us a little. We believe a ten-minute film that actually reaches someone is worth more than an hour of technically accomplished nothing.</p>
-      <div class="stats rv d4">
-        <div><span class="stat-n">112+</span><span class="stat-l">Films Made</span></div>
-        <div><span class="stat-n">23</span><span class="stat-l">Festivals</span></div>
-        <div><span class="stat-n">8</span><span class="stat-l">Years Active</span></div>
+    <div class="prod-grid">
+
+      <div class="film-card">
+        <div class="film-post">
+          <img src="https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&q=80&auto=format&fit=crop" alt="Rust and Revival"/>
+          <div class="film-ov"><span class="badge b-rel">Released</span></div>
+        </div>
+        <div class="film-inf">
+          <div class="film-genre">Drama / Documentary Hybrid</div>
+          <h3 class="film-title">Rust &amp; Revival</h3>
+          <p class="film-syn">Three generations of a Detroit auto worker family navigate the collapse of the industry that defined them — and the music that saves them. Winner, Best Documentary Short at the 2023 Detroit Film Festival.</p>
+          <div class="film-meta"><span>2023 · 94 min</span><span class="film-rat">★★★★½</span></div>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <div class="film-post">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=600&q=80&auto=format&fit=crop" alt="Midnight Meridian"/>
+          <div class="film-ov"><span class="badge b-rel">Released</span></div>
+        </div>
+        <div class="film-inf">
+          <div class="film-genre">Psychological Thriller</div>
+          <h3 class="film-title">Midnight Meridian</h3>
+          <p class="film-syn">A Black woman detective in present-day Detroit uncovers a decades-old conspiracy reaching from the precinct to city hall — told entirely in one long, unbroken night. Stark, relentless, unforgettable.</p>
+          <div class="film-meta"><span>2024 · 112 min</span><span class="film-rat">★★★★★</span></div>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <div class="film-post">
+          <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=600&q=80&auto=format&fit=crop" alt="Little Fires on Woodward"/>
+          <div class="film-ov"><span class="badge b-post">Post-Production</span></div>
+        </div>
+        <div class="film-inf">
+          <div class="film-genre">Coming-of-Age Drama</div>
+          <h3 class="film-title">Little Fires on Woodward</h3>
+          <p class="film-syn">Four teenagers from wildly different Detroit neighborhoods are thrown together in a summer theater program — and discover that the script for their lives has already been written by forces much older than themselves.</p>
+          <div class="film-meta"><span>2025 · Est. 105 min</span><span class="film-rat">Post-Production</span></div>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <div class="film-post">
+          <img src="https://images.unsplash.com/photo-1553514029-1318c9127859?w=600&q=80&auto=format&fit=crop" alt="The Congregation"/>
+          <div class="film-ov"><span class="badge b-prod">In Production</span></div>
+        </div>
+        <div class="film-inf">
+          <div class="film-genre">Spiritual Drama</div>
+          <h3 class="film-title">The Congregation</h3>
+          <p class="film-syn">A charismatic pastor leads his century-old Detroit church through its greatest crisis of faith — a story of belief, betrayal, and the sacred architecture of community. All-Detroit ensemble cast.</p>
+          <div class="film-meta"><span>2025 · Currently Filming</span><span class="film-rat">In Production</span></div>
+        </div>
+      </div>
+
+      <div class="film-card">
+        <div class="film-post">
+          <img src="https://images.unsplash.com/photo-1596443686812-2f45229eebc3?w=600&q=80&auto=format&fit=crop" alt="Sovereign"/>
+          <div class="film-ov"><span class="badge b-dev">Development</span></div>
+        </div>
+        <div class="film-inf">
+          <div class="film-genre">Historical Epic</div>
+          <h3 class="film-title">Sovereign</h3>
+          <p class="film-syn">The untold story of Detroit's Black Bottom neighborhood — demolished in the 1950s — through the eyes of a jazz musician who refuses to leave. A love letter to everything we were forced to forget.</p>
+          <div class="film-meta"><span>2026 · In Development</span><span class="film-rat">Announced</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MONOLOGUES ══════════════════ -->
+<section class="monologues section" id="monologues">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow rv">Practice &amp; Perform</div>
+      <div class="gold-rule rv"></div>
+      <h2 class="sec-title rv">Monologue <em>Library</em></h2>
+      <p class="sec-sub rv">Original monologues written by Detroit storytellers — crafted for auditions, workshops, and self-discovery.</p>
+    </div>
+    <div class="mfilters rv">
+      <button class="mfbtn on" data-f="all">All</button>
+      <button class="mfbtn" data-f="drama">Drama</button>
+      <button class="mfbtn" data-f="comedy">Comedy</button>
+      <button class="mfbtn" data-f="dramedy">Dramedy</button>
+    </div>
+    <div class="mono-grid" id="monoGrid">
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-adv">Advanced</span></div>
+          <span class="mono-dur">⏱ 2:30</span>
+        </div>
+        <h3 class="mono-title">"The Last Shift"</h3>
+        <div class="mono-char">Character: Marcus, 58 — Retired Auto Worker</div>
+        <div class="mono-script open" id="ms1">
+          <p>You want to know what they never show you in the commercials? The last day. They don't show you the last day when you walk out of that plant and the door closes behind you and you realize — <em>that sound</em>. That sound you've been listening to for thirty-four years. You can't hear it anymore.</p>
+          <p>I built Chevys. I built Fords. I built pieces of this country's backbone while this country forgot my name. And when they finally gave me that watch — that watch with the fake gold that turns green before the year is out — I smiled. I shook the foreman's hand. I didn't cry until I got to my car.</p>
+          <p>My son thinks I should be relieved. <em>Retired.</em> He says that word like it's a gift. Maybe it is. Maybe I just don't know how to unwrap it yet.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms1',this)">Collapse ↑</button>
+      </div>
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-int">Intermediate</span></div>
+          <span class="mono-dur">⏱ 1:45</span>
+        </div>
+        <h3 class="mono-title">"Letters to Nobody"</h3>
+        <div class="mono-char">Character: Deja, 19 — First-Generation College Student</div>
+        <div class="mono-script" id="ms2">
+          <p>Every Sunday my grandmother writes me a letter. A real letter, on paper, in her handwriting that slants right like she's always leaning into the wind. She doesn't email. She doesn't text. She writes.</p>
+          <p>She tells me about the church and the neighbor's new car and the weather in Detroit like the weather in Detroit is something I need to know in Boston. And I keep every single one of them in a shoebox under my dorm room bed.</p>
+          <p>Because some nights — some nights when I feel like the most invisible person in every room I walk into — I open that box and I remember that somewhere, somebody knows where I come from. Somebody is writing my name down in ink that doesn't delete.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms2',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="comedy">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-comedy">Comedy</span><span class="tag t-beg">Beginner</span></div>
+          <span class="mono-dur">⏱ 1:30</span>
+        </div>
+        <h3 class="mono-title">"Renaissance Man"</h3>
+        <div class="mono-char">Character: Jerome, 42 — Self-Proclaimed Detroit Renaissance Man</div>
+        <div class="mono-script" id="ms3">
+          <p>People ask me what I do and I tell them: I'm a Renaissance Man. That means I do everything. I do a little DJ work on the weekends, I detail cars on Tuesdays and Thursdays, I'm currently in the process of writing a cookbook — it's mostly chili recipes — and I'm also developing a sneaker line.</p>
+          <p>My cousin says I need to "pick one thing and commit." She says that to me while working her one job that makes her miserable every single day. I respectfully decline her advice.</p>
+          <p>Detroit didn't get rebuilt by people who did one thing. Detroit got rebuilt by people who did everything, all at once, with whatever they had. The sneaker line is almost done, by the way. I just need a logo. And a manufacturer. And investors. But the name is solid — <em>Phoenixs</em>. With an 's.' It's plural because there's more than one phoenix in this city.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms3',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-adv">Advanced</span></div>
+          <span class="mono-dur">⏱ 2:15</span>
+        </div>
+        <h3 class="mono-title">"Apology Tour"</h3>
+        <div class="mono-char">Character: Renee, 35 — Woman Addressing Estranged Mother</div>
+        <div class="mono-script" id="ms4">
+          <p>I rehearsed this. I actually rehearsed this in the mirror for three days, which — I know — sounds like something a crazy person does. But I needed to be ready because every time I get in front of you, my voice just... disappears.</p>
+          <p>I'm not here to relitigate everything. I know you have your version and I have mine and God has the real version and we'll probably never fully agree. But I am here to say that I'm sorry for the years I spent punishing you for not being who I needed you to be. That wasn't fair.</p>
+          <p><em>[Beat.]</em></p>
+          <p>I brought you flowers. I know you don't like flowers in the house because of the pollen but I bought them anyway and now I'm standing here holding these flowers and I don't know what to do with them and I think that's a pretty accurate summary of our relationship, honestly.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms4',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="dramedy">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-dramedy">Dramedy</span><span class="tag t-int">Intermediate</span></div>
+          <span class="mono-dur">⏱ 2:00</span>
+        </div>
+        <h3 class="mono-title">"The Eulogy"</h3>
+        <div class="mono-char">Character: Calvin, 50 — Speaking at His Father's Funeral</div>
+        <div class="mono-script" id="ms5">
+          <p>My father — and I want to say this with all the love in my heart — was the most stubborn man God ever put on this earth. This man refused to take directions. From anyone. Including MapQuest. Including actual paper maps. Including a compass one time in 1998 on a camping trip I will never fully recover from.</p>
+          <p><em>[Pause. Voice breaking slightly.]</em></p>
+          <p>But here's the thing about stubbornness when it's wrapped in love — it looks a lot like faith. He never doubted any of us. Not once. Not when I dropped out of college, not when my sister opened that restaurant that burned down — not one time did this man look at one of his children and say, "I'm not sure about you."</p>
+          <p>He was sure. He was always, always sure. And I didn't understand, until right now, standing here without him, how much of my own confidence was just his confidence living in me.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms5',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-adv">Advanced</span></div>
+          <span class="mono-dur">⏱ 2:45</span>
+        </div>
+        <h3 class="mono-title">"Invisible Ink"</h3>
+        <div class="mono-char">Character: Simone, 28 — Emerging Spoken Word Artist</div>
+        <div class="mono-script" id="ms6">
+          <p>They want you to be authentic. They want your rawness, your pain, your grandmother's recipes and your grandfather's arrest record and everything beautiful and broken about where you come from. They want all of that on stage, in a cup, for $14 with oat milk.</p>
+          <p>And then — when you give it to them, when you actually open your chest and let them see — they call it "powerful." They say "I had no idea." And you are proud. You are. But you're also standing there, a little emptier than you were when you walked in, wondering if maybe you should have kept something back.</p>
+          <p>My mother says: <em>write it all down anyway</em>. She says the things you keep inside rot. She says put it in ink, baby. Put it in ink so it outlasts us both.</p>
+          <p>So I write it all down. I just make sure I'm writing it for me first. And if you happen to see yourself in it — good. That means you're not as alone as you thought.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms6',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="comedy">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-comedy">Comedy</span><span class="tag t-beg">Beginner</span></div>
+          <span class="mono-dur">⏱ 1:20</span>
+        </div>
+        <h3 class="mono-title">"The Interview"</h3>
+        <div class="mono-char">Character: Brianna, 24 — First Real Job Interview</div>
+        <div class="mono-script" id="ms7">
+          <p>Okay. Okay. I have been preparing for this interview for two weeks. I have a folder on my desktop labeled "Career Goals" with seventeen documents in it. I have watched fourteen YouTube videos about "power poses." I am wearing a blazer I borrowed from my aunt who is four inches shorter than me and I have checked my teeth in every reflective surface in this building.</p>
+          <p>I am ready. They're going to ask me about my greatest weakness and I'm going to say "I work too hard" and they're going to see right through that but I'm going to say it with such confidence that they'll hire me anyway.</p>
+          <p><em>[Beat.]</em></p>
+          <p>My name is on the door. They just called my name. Lord, please let this blazer look intentional.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms7',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="dramedy">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-dramedy">Dramedy</span><span class="tag t-int">Intermediate</span></div>
+          <span class="mono-dur">⏱ 2:10</span>
+        </div>
+        <h3 class="mono-title">"Renovation Season"</h3>
+        <div class="mono-char">Character: Yvonne, 45 — Homeowner in Gentrifying Neighborhood</div>
+        <div class="mono-script" id="ms8">
+          <p>The coffee shop opened in March. On the corner where Mr. Tatum used to fix cars out of his garage for thirty years, there is now a coffee shop with Edison bulbs and a chalkboard menu and a latte named "The Detroiter" that costs six dollars and contains no memories of Detroit whatsoever.</p>
+          <p>And the thing is — <em>[sighs]</em> — it's actually a really good latte. Which makes me furious. I wanted to hate it completely and I can't. I'm in there every Thursday with my oat milk cortado feeling like a traitor to my own ZIP code.</p>
+          <p>My daughter says: "Mom, you can appreciate a good coffee shop and also grieve the neighborhood you grew up in." She's twenty-two. She's annoyingly wise. I'm choosing to be irritated by her wisdom for at least another year.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms8',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-adv">Advanced</span></div>
+          <span class="mono-dur">⏱ 3:00</span>
+        </div>
+        <h3 class="mono-title">"The River Between Us"</h3>
+        <div class="mono-char">Character: Thomas, 16 — Young Man at the Detroit-Windsor Border</div>
+        <div class="mono-script" id="ms9">
+          <p>You can see Canada from here. Did you know that? From the Detroit Riverwalk you can literally see another country. Another country where people look just like us, talk just like us, bleed just like us — and have a completely different life just across the water.</p>
+          <p>My history teacher told us that Detroit was the last stop on the Underground Railroad. That freedom was right here, always visible, always close enough to swim to if you were brave enough. She said some people swam it. In November. In the dark.</p>
+          <p><em>[Long pause. Looking at the river.]</em></p>
+          <p>I'm going to college next year. First one in my family. My mom doesn't say much about it because she doesn't know how to talk about big things without crying. But last night she folded all my new college shirts. Folded every single one of them. And put them in a stack by the door. Like she's already sending me forward. Like she's already proud.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms9',this)">Read Full Script ↓</button>
+      </div>
+
+      <div class="mono-card" data-cat="drama">
+        <div class="mono-hd">
+          <div class="mono-tags"><span class="tag t-drama">Drama</span><span class="tag t-int">Intermediate</span></div>
+          <span class="mono-dur">⏱ 1:55</span>
+        </div>
+        <h3 class="mono-title">"Second Wind"</h3>
+        <div class="mono-char">Character: Lydia, 62 — Woman Returning to College at 62</div>
+        <div class="mono-script" id="ms10">
+          <p>My classmates keep calling me "inspiring." Every time I pull out my notebook, somebody says, "You're so inspiring." I don't know how to tell them that I'm not trying to inspire anyone. I'm trying to get my English degree because I was supposed to get it forty years ago and life had other plans and I am not going to die without finishing what I started.</p>
+          <p>I raised four kids. I buried a husband. I survived a recession that took our house and a pandemic that took my best friend. I have been through enough to fill ten novels. And now, finally, I am going to learn how to write them properly.</p>
+          <p>The professor asked us to write about something we know better than anyone else. I filled eight pages. It turns out, when you finally look at your life, it's actually kind of extraordinary. I just couldn't see it while I was inside of it.</p>
+        </div>
+        <button class="mono-toggle" onclick="toggleMono('ms10',this)">Read Full Script ↓</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SUBMIT TALENT ══════════════════ -->
+<section class="submit section" id="submit">
+  <div class="submit-bg">
+    <div class="submit-ov"></div>
+    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&q=80&auto=format&fit=crop" alt="Stage lights"/>
+  </div>
+  <div class="container">
+    <div class="submit-grid">
+      <div>
+        <div class="eyebrow rv" style="color:var(--gold)">Open Call</div>
+        <div class="gold-rule rv"></div>
+        <h2 class="sec-title rv" style="color:var(--cream)">Submit Your <em>Talent</em></h2>
+        <p class="submit-desc rv">We review every submission personally. No gatekeepers, no algorithm — just Peirre and the creative team watching your work and asking one question: does this person have something to say?</p>
+        <ul class="sub-perks rv">
+          <li>✦ Personal review by our creative team within 14 days</li>
+          <li>✦ Feedback provided on all serious submissions</li>
+          <li>✦ Selected talents invited to Detroit workshop</li>
+          <li>✦ No experience required — only authenticity</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <form class="form-box" id="talentForm" onsubmit="handleTalent(event)">
+          <div class="frow">
+            <div class="fg"><label>Full Name *</label><input type="text" id="tName" placeholder="Your full name" required/></div>
+            <div class="fg"><label>Age *</label><input type="number" id="tAge" placeholder="Your age" min="13" max="99" required/></div>
+          </div>
+          <div class="fg"><label>Email Address *</label><input type="email" id="tEmail" placeholder="your@email.com" required/></div>
+          <div class="fg">
+            <label>Performance Experience</label>
+            <select id="tExp">
+              <option value="">Select your experience level</option>
+              <option>No formal experience — just passion</option>
+              <option>School / community theater</option>
+              <option>Semi-professional (local productions)</option>
+              <option>Professional experience</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Choose a Monologue to Perform</label>
+            <select id="tMono">
+              <option value="">Select a monologue</option>
+              <option>The Last Shift</option>
+              <option>Letters to Nobody</option>
+              <option>Renaissance Man</option>
+              <option>Apology Tour</option>
+              <option>The Eulogy</option>
+              <option>Invisible Ink</option>
+              <option>The Interview</option>
+              <option>Renovation Season</option>
+              <option>The River Between Us</option>
+              <option>Second Wind</option>
+              <option>Original Piece (my own work)</option>
+            </select>
+          </div>
+          <div class="fg"><label>Tell Us About Yourself</label><textarea id="tNotes" placeholder="What drives you to perform? What stories do you want to tell?" rows="4"></textarea></div>
+          <div class="fg">
+            <label>Upload Performance Video or Reel</label>
+            <div class="upload-z" id="upZone" onclick="document.getElementById('upFile').click()">
+              <input type="file" id="upFile" accept="video/*,.pdf" style="display:none" onchange="onFileSelect(this)"/>
+              <div class="upload-ico">▲</div>
+              <div class="upload-t">Click or Drag &amp; Drop</div>
+              <div class="upload-s">MP4, MOV, or PDF · Max 500MB</div>
+            </div>
+            <div class="upload-sel" id="upSel"></div>
+          </div>
+          <button type="submit" class="btn btn-p btn-full">Submit My Talent →</button>
+        </form>
+        <div class="fsuccess" id="tSuccess">
+          <div class="sico">✦</div>
+          <h3>Submission Received</h3>
+          <p>Thank you. Peirre and the team will review your work within 14 business days. Watch your inbox for our response.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<hr class="rule">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="rv">
-    <p class="s-label">Work With Us</p>
-    <h2 class="s-title">Every project starts<br>with a <em style="font-style:italic">conversation.</em></h2>
-  </div>
-  <div class="contact-layout">
-    <div class="contact-aside rv d1">
-      <p class="s-intro">We work with a limited number of clients and collaborators each year. If you have something real you want to make, we want to hear about it — even if it's just an instinct right now.</p>
-      <div class="contact-detail">
-        <div class="cd"><label>Email</label><a href="mailto:hello@dorseyfilms.com">hello@dorseyfilms.com</a></div>
-        <div class="cd"><label>Studio</label><span>2140 Penn Avenue, Strip District<br>Pittsburgh, PA 15222</span></div>
-        <div class="cd"><label>Current Availability</label><span>Accepting projects for Q3–Q4 2025</span></div>
-        <div class="cd"><label>Response Time</label><span>Within 48 business hours</span></div>
-        <div class="cd"><label>Emerging Filmmakers</label><span>We mentor two filmmakers per year — mention it in your message.</span></div>
-      </div>
+<!-- ══════════════════ ARTISTS ══════════════════ -->
+<section class="artists section" id="artists">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow rv">Discovered &amp; Developed</div>
+      <div class="gold-rule rv"></div>
+      <h2 class="sec-title rv">Featured <em>Artists</em></h2>
+      <p class="sec-sub rv">These are the voices Dorsey Films brought to the world. Each one found through community, not industry.</p>
     </div>
-    <div class="rv d2">
-      <form id="cForm" novalidate>
-        <div class="f-row">
-          <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" name="fn" placeholder="Marcus" required></div>
-          <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" name="ln" placeholder="Cole" required></div>
+    <div class="art-grid">
+
+      <div class="art-card">
+        <div class="art-imgw">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Aaliyah Monroe"/>
+          <div class="art-ov"><div class="art-style">Naturalistic · Intense · Transformative</div></div>
         </div>
-        <div class="f-row">
-          <div class="fg"><label for="em">Email</label><input type="email" id="em" name="em" placeholder="hello@studio.com" required></div>
-          <div class="fg"><label for="ph">Phone (Optional)</label><input type="tel" id="ph" name="ph" placeholder="+1 (412) 555-0100"></div>
+        <div class="art-inf">
+          <h3 class="art-name">Aaliyah Monroe</h3>
+          <p class="art-bio">Discovered at a Detroit Public Theater open call in 2021. Her debut in <em>Midnight Meridian</em> earned her a Spirit Award nomination. Every pause she takes tells a story.</p>
+          <div class="art-tags"><span>Drama</span><span>Film</span><span>Stage</span></div>
         </div>
-        <div class="fg">
-          <label for="sv">Type of Project</label>
-          <select id="sv" name="sv">
-            <option value="">— Select a service —</option>
-            <option>Film Production</option>
-            <option>Post-Production &amp; Editing</option>
-            <option>Creative Direction</option>
-            <option>Script &amp; Story Development</option>
-            <option>Color Grading</option>
-            <option>Collaboration / Other</option>
-          </select>
+      </div>
+
+      <div class="art-card">
+        <div class="art-imgw">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Devon Carthwright"/>
+          <div class="art-ov"><div class="art-style">Physical · Comedic · Grounded</div></div>
         </div>
-        <div class="fg">
-          <label for="bg">Approximate Budget</label>
-          <select id="bg" name="bg">
-            <option value="">— Budget range —</option>
-            <option>Under $5,000</option>
-            <option>$5,000 – $15,000</option>
-            <option>$15,000 – $50,000</option>
-            <option>$50,000 – $150,000</option>
-            <option>$150,000+</option>
-            <option>Let's discuss</option>
-          </select>
+        <div class="art-inf">
+          <h3 class="art-name">Devon Carthwright</h3>
+          <p class="art-bio">A former spoken word champion from Cass Tech. Devon brought his lyrical presence to film in <em>Rust &amp; Revival</em> — moving between comedy and heartbreak with effortless precision.</p>
+          <div class="art-tags"><span>Drama</span><span>Spoken Word</span><span>Documentary</span></div>
         </div>
-        <div class="fg"><label for="msg">Tell us about your project</label><textarea id="msg" name="msg" placeholder="What are you trying to make, and why does it matter to you right now?" required></textarea></div>
-        <div class="f-footer">
-          <span class="f-note">We read every message personally. No auto-replies.</span>
-          <button type="submit" class="btn-send">Send Message</button>
+      </div>
+
+      <div class="art-card">
+        <div class="art-imgw">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Simone Waters"/>
+          <div class="art-ov"><div class="art-style">Vulnerable · Precise · Electric</div></div>
         </div>
-      </form>
-      <div class="f-success" id="fSuccess">
-        <h3>Message received.</h3>
-        <p>We'll read it carefully and respond within 48 hours. Thank you for reaching out.</p>
+        <div class="art-inf">
+          <h3 class="art-name">Simone Waters</h3>
+          <p class="art-bio">Sent Peirre an unsolicited self-tape in 2022 with no credits and no training. What she had was truth. Already in talks with two major streaming networks for her next project.</p>
+          <div class="art-tags"><span>Drama</span><span>Coming-of-Age</span><span>Film</span></div>
+        </div>
+      </div>
+
+      <div class="art-card">
+        <div class="art-imgw">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Marcus L. Freeman"/>
+          <div class="art-ov"><div class="art-style">Commanding · Spiritual · Classic</div></div>
+        </div>
+        <div class="art-inf">
+          <h3 class="art-name">Marcus L. Freeman</h3>
+          <p class="art-bio">Twenty years of Detroit stage experience before his first on-camera role. As the lead in <em>The Congregation</em>, Marcus delivers what critics are calling a career-defining performance.</p>
+          <div class="art-tags"><span>Stage</span><span>Film</span><span>Spiritual Drama</span></div>
+        </div>
+      </div>
+
+      <div class="art-card">
+        <div class="art-imgw">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format&fit=crop&facepad=3&crop=faces" alt="Tamika Osei"/>
+          <div class="art-ov"><div class="art-style">Fearless · Comedic · Deeply Human</div></div>
+        </div>
+        <div class="art-inf">
+          <h3 class="art-name">Tamika Osei</h3>
+          <p class="art-bio">Tamika's social content caught Dorsey's attention — not her follower count, but what she was saying. Currently co-writing and leading an original series developed with Dorsey Films.</p>
+          <div class="art-tags"><span>Comedy</span><span>Writing</span><span>Multiplatform</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CASTING ══════════════════ -->
+<section class="casting section" id="casting">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow rv">Now Seeking</div>
+      <div class="gold-rule rv"></div>
+      <h2 class="sec-title rv">Open <em>Casting Calls</em></h2>
+      <p class="sec-sub rv">Current roles available across our active productions. All backgrounds welcome. Detroit residents encouraged.</p>
+    </div>
+    <div class="cast-grid">
+
+      <div class="cast-card">
+        <div class="cast-proj">The Congregation</div>
+        <h3 class="cast-role">Sister Lucille — Supporting Lead</h3>
+        <p class="cast-desc">Black woman, 50s–60s. Church organist and emotional anchor of the congregation. Must convey decades of faith and private doubt through minimal dialogue. Stage presence essential. Non-professional or professional actors welcome.</p>
+        <div class="cast-details"><span class="ctag">Female</span><span class="ctag">Ages 50–65</span><span class="ctag">Detroit Preferred</span></div>
+        <div class="cast-foot">
+          <span class="cast-ddl">Deadline: Aug 15, 2025</span>
+          <a href="#submit" class="cast-apply">Apply Now →</a>
+        </div>
+      </div>
+
+      <div class="cast-card">
+        <div class="cast-proj">Sovereign</div>
+        <h3 class="cast-role">Young Ruby — Lead</h3>
+        <p class="cast-desc">Black woman, 20s–30s. A jazz musician in 1950s Detroit refusing displacement. Period-specific physical language required. Musical ability (any instrument) is a significant plus. This is the film's soul — we need someone extraordinary.</p>
+        <div class="cast-details"><span class="ctag">Female</span><span class="ctag">Ages 22–35</span><span class="ctag">Musical Ability +</span></div>
+        <div class="cast-foot">
+          <span class="cast-ddl">Deadline: Oct 1, 2025</span>
+          <a href="#submit" class="cast-apply">Apply Now →</a>
+        </div>
+      </div>
+
+      <div class="cast-card">
+        <div class="cast-proj">Little Fires on Woodward</div>
+        <h3 class="cast-role">Teen Ensemble — 2 Roles Remaining</h3>
+        <p class="cast-desc">Seeking two teenagers (16–19) for ensemble roles. Must commit to 6-week Detroit filming schedule (June–July). Detroit-area high school students strongly encouraged. No experience necessary — only truth.</p>
+        <div class="cast-details"><span class="ctag">Any Gender</span><span class="ctag">Ages 16–19</span><span class="ctag">Any Experience</span></div>
+        <div class="cast-foot">
+          <span class="cast-ddl">Deadline: May 30, 2025</span>
+          <a href="#submit" class="cast-apply">Apply Now →</a>
+        </div>
+      </div>
+
+      <div class="cast-card cast-wide">
+        <div class="cast-proj">New Short Film — Untitled</div>
+        <h3 class="cast-role">Open Audition — All Types Welcome</h3>
+        <p class="cast-desc">Dorsey Films is developing a new short film exploring mental health in the Black community. We are seeking 4–6 actors of all ages, genders, and experience levels in the Metro Detroit area. Workshop-style callbacks will be held for finalists. The script is still being developed and cast members may contribute to the writing process.</p>
+        <div class="cast-details"><span class="ctag">All Genders</span><span class="ctag">Ages 18+</span><span class="ctag">All Backgrounds</span><span class="ctag">Metro Detroit</span></div>
+        <div class="cast-foot">
+          <span class="cast-ddl">Rolling — through Sep 2025</span>
+          <a href="#submit" class="cast-apply">Apply Now →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BLOG ══════════════════ -->
+<section class="blog section" id="blog">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow rv">From the Studio</div>
+      <div class="gold-rule rv"></div>
+      <h2 class="sec-title rv">The <em>Journal</em></h2>
+      <p class="sec-sub rv">Craft essays, industry perspectives, and dispatches from the Dorsey Films creative process.</p>
+    </div>
+    <div class="blog-grid">
+
+      <article class="blog-card blog-feat">
+        <div class="blog-imgw">
+          <img src="https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?w=800&q=80&auto=format&fit=crop" alt="Film production"/>
+          <div class="blog-cat">Craft</div>
+        </div>
+        <div class="blog-con">
+          <div class="blog-date">March 14, 2025</div>
+          <h3 class="blog-title">The Camera Doesn't Lie — But It Does Edit</h3>
+          <p class="blog-exc">We talk a lot about authenticity in film. Every director claims to want "real" performances, "real" stories, "real" emotion. But what does authentic mean when you're asking someone to perform realness on a schedule, under artificial light, with a crew of thirty people watching? Peirre Doresy explores the beautiful contradiction at the heart of honest filmmaking.</p>
+          <a href="#blog" class="blog-read">Read Essay →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-imgw">
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?w=600&q=80&auto=format&fit=crop" alt="Writing at desk"/>
+          <div class="blog-cat">Industry</div>
+        </div>
+        <div class="blog-con">
+          <div class="blog-date">February 28, 2025</div>
+          <h3 class="blog-title">Why We Don't Cast From Headshots</h3>
+          <p class="blog-exc">Our casting philosophy breaks every industry norm — and we think that's exactly why it works. Here's why we throw out the 8x10s and look for something else entirely.</p>
+          <a href="#blog" class="blog-read">Read →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-imgw">
+          <img src="https://images.unsplash.com/photo-1533928298208-27ff66555d8d?w=600&q=80&auto=format&fit=crop" alt="Detroit city"/>
+          <div class="blog-cat">Detroit</div>
+        </div>
+        <div class="blog-con">
+          <div class="blog-date">January 10, 2025</div>
+          <h3 class="blog-title">What Hollywood Gets Wrong About Detroit Stories</h3>
+          <p class="blog-exc">For decades, Detroit on screen has meant either ruin porn or comeback narrative. Neither captures the city that actually exists. It's time to talk about what's missing — and who's been missing it.</p>
+          <a href="#blog" class="blog-read">Read →</a>
+        </div>
+      </article>
+
+      <article class="blog-card">
+        <div class="blog-imgw">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=80&auto=format&fit=crop" alt="Behind a camera"/>
+          <div class="blog-cat">Workshop</div>
+        </div>
+        <div class="blog-con">
+          <div class="blog-date">December 5, 2024</div>
+          <h3 class="blog-title">How to Prepare a Monologue When You've Never Acted Before</h3>
+          <p class="blog-exc">The most common thing we hear from talented people who don't submit is: "I don't know how." This guide is for them. Start here. Start now. The only requirement is honesty.</p>
+          <a href="#blog" class="blog-read">Read →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="cont-grid">
+      <div>
+        <div class="eyebrow rv">Get In Touch</div>
+        <div class="gold-rule rv"></div>
+        <h2 class="sec-title rv">Let's <em>Connect</em></h2>
+        <p class="cont-desc rv">Whether you're a filmmaker, a talent with a story to tell, a brand looking to collaborate, or just someone who loves cinema — our door is always open.</p>
+        <div class="cont-info rv">
+          <div class="cont-item">
+            <div class="cont-ico">✉</div>
+            <div><div class="cont-lbl">Email</div><a href="mailto:hello@dorseyfilms.com" class="cont-val">hello@dorseyfilms.com</a></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico">✆</div>
+            <div><div class="cont-lbl">Phone</div><a href="tel:+13135550192" class="cont-val">(313) 555-0192</a></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico">◈</div>
+            <div><div class="cont-lbl">Studio Address</div><div class="cont-val">4220 Cass Avenue, Suite 3B<br/>Detroit, Michigan 48201</div></div>
+          </div>
+          <div class="cont-item">
+            <div class="cont-ico">◷</div>
+            <div><div class="cont-lbl">Studio Hours</div><div class="cont-val">Mon–Fri · 10am–6pm EST</div></div>
+          </div>
+        </div>
+        <div class="social-row rv">
+          <a href="#" class="soc-a">Instagram</a>
+          <a href="#" class="soc-a">Vimeo</a>
+          <a href="#" class="soc-a">IMDb</a>
+          <a href="#" class="soc-a">LinkedIn</a>
+        </div>
+      </div>
+      <div class="rv">
+        <form class="form-box" id="contactForm" onsubmit="handleContact(event)">
+          <div class="frow">
+            <div class="fg"><label>Name *</label><input type="text" id="cName" placeholder="Your name" required/></div>
+            <div class="fg"><label>Email *</label><input type="email" id="cEmail" placeholder="your@email.com" required/></div>
+          </div>
+          <div class="fg">
+            <label>Subject</label>
+            <select id="cSubj">
+              <option value="">What's this about?</option>
+              <option>Talent Submission</option>
+              <option>Casting Inquiry</option>
+              <option>Collaboration / Partnership</option>
+              <option>Press / Media</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="fg"><label>Message *</label><textarea id="cMsg" placeholder="Tell us what's on your mind..." rows="6" required></textarea></div>
+          <button type="submit" class="btn btn-p btn-full">Send Message →</button>
+        </form>
+        <div class="fsuccess" id="cSuccess">
+          <div class="sico">✦</div>
+          <h3>Message Sent</h3>
+          <p>We'll be in touch within 2 business days. Thank you for reaching out.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <span class="f-logo">Dorsey Films</span>
-  <ul class="f-nav">
-    <li><a href="#reel">Reel</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <span class="f-copy">&copy; 2024 Dorsey Films LLC — Pittsburgh, PA</span>
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#home" class="nav-logo" style="margin-bottom:1rem;display:inline-flex">
+          <span class="logo-df">DF</span>
+          <span class="logo-txt">Dorsey Films</span>
+        </a>
+        <p class="footer-tag">Detroit's premier film production and talent discovery platform. Founded by Peirre Doresy. Built on authentic stories.</p>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Navigate</div>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#productions">Productions</a></li>
+          <li><a href="#monologues">Monologues</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Talent</div>
+        <ul>
+          <li><a href="#submit">Submit Talent</a></li>
+          <li><a href="#casting">Casting Calls</a></li>
+          <li><a href="#artists">Featured Artists</a></li>
+          <li><a href="#blog">Journal</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <div class="fcol-t">Connect</div>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Vimeo</a></li>
+          <li><a href="#">IMDb</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <div class="footer-copy">© 2025 Dorsey Films. All rights reserved. Detroit, Michigan.</div>
+      <div class="footer-leg"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+    </div>
+  </div>
 </footer>
 
+<!-- ══════════════════ JAVASCRIPT (INLINED) ══════════════════ -->
 <script>
-// Nav
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('s',window.scrollY>80));
+/* ── NAV SCROLL ─────────────────────────── */
+const navbar = document.getElementById('navbar');
+const hburg  = document.getElementById('hburg');
+const navLinks= document.getElementById('navLinks');
 
-// Mobile menu
-function toggleMenu(){
-  document.getElementById('burger').classList.toggle('o');
-  document.getElementById('navLinks').classList.toggle('open');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  highlightNav();
+});
+
+hburg.addEventListener('click', () => {
+  hburg.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-a').forEach(a => {
+  a.addEventListener('click', () => {
+    hburg.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+function highlightNav() {
+  const pos = window.scrollY + window.innerHeight * 0.35;
+  document.querySelectorAll('section[id]').forEach(s => {
+    const link = document.querySelector('.nav-a[href="#' + s.id + '"]');
+    if (!link) return;
+    const inView = pos >= s.offsetTop && pos < s.offsetTop + s.offsetHeight;
+    link.classList.toggle('active', inView);
+  });
 }
-function cm(){
-  document.getElementById('burger').classList.remove('o');
-  document.getElementById('navLinks').classList.remove('open');
-}
 
-// Scroll reveal
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
-},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+/* ── SMOOTH SCROLL ──────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
+    e.preventDefault();
+    window.scrollTo({ top: t.offsetTop - 76, behavior: 'smooth' });
+  });
+});
 
-// Form
-document.getElementById('cForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  const req=['fn','em','msg'];
-  let ok=true;
-  req.forEach(id=>{
-    const f=document.getElementById(id);
-    if(!f.value.trim()){
-      f.style.borderColor='rgba(220,100,80,.6)';
-      setTimeout(()=>f.style.borderColor='',2200);
-      if(ok){f.focus();ok=false;}
+/* ── SCROLL REVEAL ──────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      io.unobserve(e.target);
     }
   });
-  if(!ok)return;
-  this.style.display='none';
-  document.getElementById('fSuccess').classList.add('show');
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.rv,.gold-rule').forEach(el => io.observe(el));
+
+/* ── CARD STAGGER ───────────────────────── */
+const cio = new IntersectionObserver(entries => {
+  const vis = entries.filter(e => e.isIntersecting);
+  vis.forEach((e, i) => {
+    setTimeout(() => e.target.classList.add('on'), i * 100);
+    cio.unobserve(e.target);
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.film-card,.mono-card,.art-card,.cast-card,.blog-card').forEach(c => {
+  c.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)';
+  cio.observe(c);
+});
+
+/* ── MONOLOGUE TOGGLE ───────────────────── */
+function toggleMono(id, btn) {
+  const s = document.getElementById(id);
+  const open = s.classList.toggle('open');
+  btn.textContent = open ? 'Collapse ↑' : 'Read Full Script ↓';
+}
+
+/* ── MONOLOGUE FILTER ───────────────────── */
+document.querySelectorAll('.mfbtn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.mfbtn').forEach(b => b.classList.remove('on'));
+    this.classList.add('on');
+    const f = this.dataset.f;
+    document.querySelectorAll('.mono-card').forEach((card, i) => {
+      const show = f === 'all' || card.dataset.cat === f;
+      if (show) {
+        card.style.display = '';
+        setTimeout(() => card.classList.add('on'), i * 70);
+      } else {
+        card.classList.remove('on');
+        setTimeout(() => { card.style.display = 'none'; }, 320);
+      }
+    });
+  });
+});
+
+/* ── FILE UPLOAD ────────────────────────── */
+const upZone = document.getElementById('upZone');
+if (upZone) {
+  upZone.addEventListener('dragover', e => {
+    e.preventDefault();
+    upZone.style.borderColor = 'var(--gold)';
+    upZone.style.background  = 'var(--goldx)';
+  });
+  upZone.addEventListener('dragleave', () => {
+    upZone.style.borderColor = '';
+    upZone.style.background  = '';
+  });
+  upZone.addEventListener('drop', e => {
+    e.preventDefault();
+    upZone.style.borderColor = '';
+    upZone.style.background  = '';
+    if (e.dataTransfer.files[0]) showFile(e.dataTransfer.files[0]);
+  });
+}
+
+function onFileSelect(input) {
+  if (input.files[0]) showFile(input.files[0]);
+}
+
+function showFile(f) {
+  const sel = document.getElementById('upSel');
+  const zone= document.getElementById('upZone');
+  if (!sel || !zone) return;
+  sel.style.display = 'block';
+  sel.textContent   = '✓  ' + f.name + '  (' + (f.size/1048576).toFixed(1) + ' MB)';
+  zone.style.borderColor = 'var(--gold)';
+  zone.style.borderStyle = 'solid';
+}
+
+/* ── FORM HELPERS ───────────────────────── */
+function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+function shake(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.style.borderColor = '#e86c5e';
+  el.style.animation   = 'none';
+  el.getBoundingClientRect();
+  el.style.animation   = 'shake .4s ease';
+  el.focus();
+  setTimeout(() => { el.style.borderColor = ''; el.style.animation = ''; }, 900);
+}
+
+function showSuccess(formId, successId) {
+  const form = document.getElementById(formId);
+  const suc  = document.getElementById(successId);
+  if (!form || !suc) return;
+  form.style.opacity   = '0';
+  form.style.transform = 'translateY(-10px)';
+  form.style.transition= 'opacity .35s,transform .35s';
+  setTimeout(() => {
+    form.style.display  = 'none';
+    suc.style.display   = 'block';
+    suc.style.opacity   = '0';
+    suc.style.transform = 'translateY(10px)';
+    suc.style.transition= 'opacity .35s,transform .35s';
+    requestAnimationFrame(() => {
+      suc.style.opacity   = '1';
+      suc.style.transform = 'translateY(0)';
+    });
+  }, 380);
+}
+
+function handleTalent(e) {
+  e.preventDefault();
+  const name  = document.getElementById('tName').value.trim();
+  const email = document.getElementById('tEmail').value.trim();
+  const age   = document.getElementById('tAge').value;
+  if (!name)              return shake('tName');
+  if (!validEmail(email)) return shake('tEmail');
+  if (!age)               return shake('tAge');
+  showSuccess('talentForm','tSuccess');
+}
+
+function handleContact(e) {
+  e.preventDefault();
+  const name  = document.getElementById('cName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const msg   = document.getElementById('cMsg').value.trim();
+  if (!name)              return shake('cName');
+  if (!validEmail(email)) return shake('cEmail');
+  if (!msg)               return shake('cMsg');
+  showSuccess('contactForm','cSuccess');
+}
+
+/* ── SHAKE KEYFRAMES ────────────────────── */
+document.head.insertAdjacentHTML('beforeend',
+  '<style>@keyframes shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-7px)}30%{transform:translateX(5px)}45%{transform:translateX(-4px)}60%{transform:translateX(3px)}75%{transform:translateX(-2px)}}</style>'
+);
+
+/* ── COUNTER ANIMATION ──────────────────── */
+function animNum(el, target, dur) {
+  let s = 0;
+  const step = target / (dur / 16);
+  const tick = () => {
+    s = Math.min(s + step, target);
+    el.textContent = Math.floor(s);
+    if (s < target) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+const counterIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.stat-n[data-target]').forEach(el => {
+        animNum(el, parseInt(el.dataset.target), 1800);
+      });
+      counterIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.6 });
+
+const stats = document.querySelector('.hero-stats');
+if (stats) counterIO.observe(stats);
+
+/* ── HERO PARALLAX ──────────────────────── */
+const heroImg = document.querySelector('.hero-bg img');
+if (heroImg) {
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY < window.innerHeight) {
+          heroImg.style.transform = 'scale(1) translateY(' + window.scrollY * 0.22 + 'px)';
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+/* ── CURSOR GLOW ────────────────────────── */
+const glow = Object.assign(document.createElement('div'), {});
+Object.assign(glow.style, {
+  position:'fixed', width:'380px', height:'380px', borderRadius:'50%',
+  background:'radial-gradient(circle,rgba(201,168,76,.045) 0%,transparent 70%)',
+  pointerEvents:'none', transform:'translate(-50%,-50%)',
+  zIndex:'9998', opacity:'0', transition:'opacity .3s'
+});
+document.body.appendChild(glow);
+
+let mx=0,my=0,gx=0,gy=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; glow.style.opacity='1'; });
+document.addEventListener('mouseleave', () => glow.style.opacity='0');
+(function loop(){ gx+=(mx-gx)*.08; gy+=(my-gy)*.08; glow.style.left=gx+'px'; glow.style.top=gy+'px'; requestAnimationFrame(loop); })();
+
+/* ── INIT HERO REVEALS ──────────────────── */
+setTimeout(() => {
+  document.querySelectorAll('.hero .rv').forEach(el => el.classList.add('on'));
+}, 120);
+
+/* ── IMAGE ERROR FALLBACKS ──────────────── */
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', function() {
+    this.style.background = 'linear-gradient(135deg,#1a1a1d 0%,#2a2a2e 100%)';
+    this.removeAttribute('src');
+  });
 });
 </script>
 </body>
