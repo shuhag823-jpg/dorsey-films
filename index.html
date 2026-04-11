@@ -8,246 +8,303 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #0a0a0a;
-    color: #eaeaea;
+:root{
+--bg:#0a0a0a;
+--text:#eaeaea;
+--muted:#9a9a9a;
+--line:#222;
+--accent:#ffffff;
 }
 
-/* NAVBAR */
-.nav {
-    position: fixed;
-    width: 100%;
-    padding: 20px 10%;
-    display: flex;
-    justify-content: space-between;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(8px);
-    z-index: 1000;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
 }
 
-.nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
+/* NAV */
+.nav{
+position:fixed;
+top:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+z-index:1000;
 }
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:18px;
+letter-spacing:1px;
+}
+
+.nav a{
+color:var(--text);
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+opacity:0.8;
+}
+
+.nav a:hover{opacity:1}
 
 /* HERO */
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 0 10%;
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding:0 8%;
+position:relative;
 }
 
-.hero video {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+top:0;
+left:0;
+z-index:-2;
 }
 
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.4), #000);
-    z-index: -1;
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom,rgba(0,0,0,0.4),#000);
+z-index:-1;
 }
 
-.hero-content {
-    max-width: 600px;
+.hero-content{
+max-width:600px;
 }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:4rem;
+margin:0;
 }
 
-.hero p {
-    color: #bbb;
+.hero p{
+color:var(--muted);
+margin-top:10px;
+line-height:1.6;
 }
 
-.btn {
-    margin-top: 20px;
-    padding: 12px 26px;
-    border: 1px solid white;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
+.btn{
+margin-top:25px;
+display:inline-block;
+padding:12px 28px;
+border:1px solid var(--accent);
+color:var(--text);
+text-decoration:none;
+transition:0.3s;
+cursor:pointer;
 }
 
-.btn:hover {
-    background: white;
-    color: black;
+.btn:hover{
+background:var(--accent);
+color:#000;
 }
 
-/* SECTIONS */
-.section {
-    padding: 100px 10%;
+/* SECTION */
+.section{
+padding:100px 8%;
+max-width:1200px;
+margin:auto;
 }
 
-/* REEL MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
-    top: 0;
-    left: 0;
-    justify-content: center;
-    align-items: center;
+h2{
+font-family:'Playfair Display',serif;
+margin-bottom:40px;
 }
 
-.modal iframe {
-    width: 80%;
-    height: 70%;
+/* REEL */
+.reel iframe{
+width:100%;
+height:520px;
+border:none;
 }
 
-.close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* MONOLOGUE */
-.monologue {
-    max-width: 700px;
-    margin-bottom: 30px;
-    border-left: 2px solid #444;
-    padding-left: 15px;
-    color: #ccc;
+/* MONOLOGUES */
+.monologue{
+max-width:750px;
+margin-bottom:35px;
+padding-left:20px;
+border-left:2px solid var(--line);
+color:#cfcfcf;
+line-height:1.7;
 }
 
 /* GRID */
-.grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.card {
-    flex: 1 1 250px;
-    background: #141414;
-    padding: 25px;
-    border-radius: 8px;
+.card{
+background:#121212;
+padding:25px;
+border-radius:6px;
+transition:0.3s;
+border:1px solid #1c1c1c;
 }
 
-/* FORM */
-form {
-    max-width: 500px;
-    margin: auto;
+.card:hover{
+transform:translateY(-6px);
+border-color:#333;
 }
 
-input, textarea {
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 12px;
-    background: #111;
-    border: 1px solid #333;
-    color: white;
+/* CONTACT */
+form{
+max-width:500px;
+}
+
+input,textarea{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+background:#111;
+border:1px solid #2a2a2a;
+color:white;
 }
 
 /* FOOTER */
-footer {
-    padding: 40px 10%;
-    color: #666;
-    border-top: 1px solid #222;
+footer{
+border-top:1px solid var(--line);
+padding:40px 8%;
+color:#777;
+font-size:14px;
+}
+
+/* FADE */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <div class="nav">
-    <div>Dorsey Films</div>
-    <div>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </div>
+<div class="logo">Dorsey Films</div>
+<div>
+<a href="#work">Work</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
 </div>
 
-<!-- HERO -->
 <div class="hero">
-    <video autoplay muted loop>
-        <source src="https://cdn.coverr.co/videos/coverr-cinematic-shot-of-a-man-walking-1606/1080p.mp4">
-    </video>
-    <div class="overlay"></div>
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-cinematic-shot-of-a-man-walking-1606/1080p.mp4">
+</video>
+<div class="overlay"></div>
 
-    <div class="hero-content">
-        <h1>Dorsey Films</h1>
-        <p>Stories built on silence, tension, and truth.</p>
-        <div class="btn" onclick="openModal()">Watch Reel</div>
-    </div>
+<div class="hero-content fade">
+<h1>Dorsey Films</h1>
+<p>We don’t create noise. We create moments people feel long after they’re gone.</p>
+<a href="#reel" class="btn">Watch Reel</a>
+</div>
 </div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-    <div class="close" onclick="closeModal()">×</div>
-    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
+<section id="reel" class="section fade">
+<h2>Showreel</h2>
+<div class="reel">
+<iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
+</div>
+</section>
+
+<section id="work" class="section fade">
+<h2>Selected Writing</h2>
+
+<div class="monologue">
+“You ever sit in a room full of people… and still feel like you’re the only one there?  
+That kind of silence doesn’t come from being alone… it comes from not being understood.”
 </div>
 
-<!-- WORK -->
-<section id="work" class="section">
-    <h2>Selected Writing</h2>
+<div class="monologue">
+“I thought time would fix everything.  
+Turns out… it just teaches you how to live with it.”
+</div>
 
-    <div class="monologue">“You don’t lose people all at once… it happens quietly.”</div>
-    <div class="monologue">“I stopped explaining myself… no one was listening.”</div>
-    <div class="monologue">“Some endings don’t come with closure… just silence.”</div>
+<div class="monologue">
+“Some people don’t leave loudly.  
+They fade… slowly… until one day you realize you’ve been alone for a while.”
+</div>
+
 </section>
 
-<!-- SERVICES -->
-<section class="section">
-    <h2>Services</h2>
+<section class="section fade">
+<h2>Services</h2>
 
-    <div class="grid">
-        <div class="card"><h3>Production</h3><p>Cinematic storytelling.</p></div>
-        <div class="card"><h3>Editing</h3><p>Emotion-driven cuts.</p></div>
-        <div class="card"><h3>Direction</h3><p>Vision to reality.</p></div>
-    </div>
+<div class="grid">
+<div class="card">
+<h3>Film Production</h3>
+<p>We create narrative-driven visuals that feel grounded, intentional, and human.</p>
+</div>
+
+<div class="card">
+<h3>Editing</h3>
+<p>Every cut is made to serve emotion, rhythm, and story — nothing more, nothing less.</p>
+</div>
+
+<div class="card">
+<h3>Creative Direction</h3>
+<p>From concept to final frame, we guide stories with clarity and purpose.</p>
+</div>
+</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-    <h2>About</h2>
-    <p style="max-width:600px;color:#bbb;">
-        Dorsey Films is a creative studio focused on emotional realism and minimal storytelling.
-    </p>
+<section id="about" class="section fade">
+<h2>About</h2>
+<p style="max-width:600px;color:#aaa;">
+Dorsey Films is a small independent studio focused on cinematic realism, minimal storytelling,
+and emotional depth. We believe the most powerful stories aren’t loud — they’re honest.
+</p>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-    <h2>Start a Project</h2>
+<section id="contact" class="section fade">
+<h2>Start a Project</h2>
 
-    <form>
-        <input placeholder="Your Name">
-        <input placeholder="Email">
-        <textarea rows="5" placeholder="Tell us about your project..."></textarea>
-        <button class="btn">Send</button>
-    </form>
+<form>
+<input placeholder="Your Name">
+<input placeholder="Email">
+<textarea rows="5" placeholder="Tell us about your project..."></textarea>
+<button class="btn">Send Inquiry</button>
+</form>
 </section>
 
 <footer>
-    <p>© 2026 Dorsey Films</p>
+<p>© 2026 Dorsey Films — Built with intention.</p>
 </footer>
 
 <script>
-function openModal(){
-    document.getElementById("modal").style.display = "flex";
-}
+const faders = document.querySelectorAll('.fade');
 
-function closeModal(){
-    document.getElementById("modal").style.display = "none";
+window.addEventListener('scroll', () => {
+faders.forEach(el => {
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+el.classList.add('show');
 }
+});
+});
 </script>
 
 </body>
